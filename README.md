@@ -19,11 +19,11 @@ The newest revision of my dotfiles.  Managed using
 ### Dotfiles
 
     sudo pip install dotfiles
-    mkdir -p ~/devel/Dotfiles
-    git clone https://github.com/jeliser/dotfiles ~/devel/Dotfiles
-    dotfiles -s -R ~/devel/Dotfiles --force
+    mkdir -p ~/.dotfiles_devel
+    git clone https://github.com/jeliser/dotfiles ~/.dotfiles_devel
+    dotfiles -s -R ~/.dotfiles_devel --force
 
-    cd ~/devel/Dotfiles
+    cd ~/.dotfiles_devel
     git submodule init && git submodule update
 
 

@@ -24,6 +24,7 @@ The newest revision of my dotfiles.  Managed using
     dotfiles -s -R ~/.dotfiles_devel --force
 
     cd ~/.dotfiles_devel
+    ./bootstrap_vim.sh
     git submodule init && git submodule update
 
 

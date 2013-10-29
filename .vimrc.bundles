@@ -1,0 +1,11 @@
+set nocompatible " must be first line
+set background=dark " Assume a dark background
+
+filetype off
+set rtp+=~/.vim/bundle/vundle
+call vundle#rc()
+
+Bundle 'gmarik/vundle'
+Bundle 'scrooloose/nerdtree'
+Bundle 'Valloric/YouCompleteMe'
+

@@ -2,8 +2,7 @@
 
 ## Description
 
-The newest revision of my dotfiles.  Managed using
-[dotfiles](https://github.com/jbernard/dotfiles).
+The newest revision of my dotfiles managed using [dotfiles](https://github.com/jbernard/dotfiles).  Thanks to [mjcarroll](https://github.com/mjcarroll/dotfiles) for the inspiration.
 
 
 ## Installation bits
@@ -19,7 +18,6 @@ The newest revision of my dotfiles.  Managed using
 ### Dotfiles
 
     sudo pip install dotfiles
-    mkdir -p ~/.dotfiles_devel
     git clone https://github.com/jeliser/dotfiles ~/.dotfiles_devel
     dotfiles -s -R ~/.dotfiles_devel --force
 

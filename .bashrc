@@ -89,7 +89,12 @@ export PATH=/usr/local/bin/svn/bin:$PATH
 
 svndiff() { vimdiff <(svn cat "$1") "$1"; }
 
-
+# Read all the interesting bits from sub-files.
+shopt -s nullglob
+for file in "$HOME/.bash_profile.d"/*.sh; do
+  source "$file"
+done
+shopt -u nullglob
 
 # Source any local definitions
 if [ -f ~/.bashrc.local ]; then

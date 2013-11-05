@@ -1,5 +1,12 @@
 # .bashrc
 
+
+# Source distribution bashrc
+if [ -f /etc/bashrc ]; then
+ . /etc/bashrc
+fi
+
+
 # User specific aliases and functions
 export PATH=/usr/local/bin/svn/bin:$PATH
 

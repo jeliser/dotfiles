@@ -5,4 +5,6 @@ ignore = [
     '.git',
     '.gitignore',
     '.gitmodules',
+    'README.md',
+    'bootstrap_vim.sh',
     '*.swp']

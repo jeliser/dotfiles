@@ -76,6 +76,8 @@ alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
+alias scons='scons -j 10'
+alias svnstat='svn status | grep ^[^?]'
 
 
 # Add an "alert" alias for long running commands.  Use like so:

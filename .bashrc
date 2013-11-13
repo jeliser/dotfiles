@@ -7,6 +7,10 @@ if [ -f /etc/bashrc ]; then
 fi
 
 
+# Load dircolors if available
+if [ -f "$HOME/.dircolors" ] ; then
+  eval $(dircolors -b $HOME/.dircolors)
+fi
 
 
 # If not running interactively, don't do anything
@@ -89,7 +93,10 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 export PATH=/usr/local/bin/svn/bin:$PATH
 
 
+# Some helpful functions
 svndiff() { vimdiff <(svn cat "$1") "$1"; }
+ak() { grep "$1" --exclude=\*.svn-base ./ $2; }
+
 
 # Read all the interesting bits from sub-files.
 shopt -s nullglob

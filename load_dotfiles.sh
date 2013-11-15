@@ -1,2 +1,2 @@
 #!/bin/bash
-dotfiles -s -R `pwd` --force
+dotfiles -s -R `pwd`/dotfiles --force

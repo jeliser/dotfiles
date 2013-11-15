@@ -1,6 +1,6 @@
 [dotfiles]
 prefix = .
-repository = ~/.dotfiles_devel/
+repository = ~/.dotfiles_devel/dotfiles
 ignore = [
     '.git',
     '.gitignore',

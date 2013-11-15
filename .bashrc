@@ -95,7 +95,7 @@ export PATH=/usr/local/bin/svn/bin:$PATH
 
 # Some helpful functions
 svndiff() { vimdiff <(svn cat "$1") "$1"; }
-ag() { grep "$1" --exclude=\*.svn-base ./ $2; }
+ag() { grep "$1" --exclude=\*.svn-base -n ./* $2; }
 
 
 # Read all the interesting bits from sub-files.

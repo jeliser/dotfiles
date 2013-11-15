@@ -2,8 +2,8 @@
 
 
 # Source distribution bashrc
-if [ -f "/etc/bashrc" ]; then
- . "/etc/bashrc"
+if [ -f /etc/bashrc ]; then
+ . /etc/bashrc
 fi
 
 
@@ -84,8 +84,8 @@ done
 shopt -u nullglob
 
 # Source any local definitions
-if [ -f "~/.bashrc.local" ]; then
- . "~/.bashrc.local"
+if [ -f ~/.bashrc.local ]; then
+ . ~/.bashrc.local
 fi
 
 

@@ -19,10 +19,9 @@ The newest revision of my dotfiles managed using [dotfiles](https://github.com/j
 
     sudo pip install dotfiles
     git clone https://github.com/jeliser/dotfiles ~/.dotfiles_devel
-    dotfiles -s -R ~/.dotfiles_devel --force
+    dotfiles -s -R ~/.dotfiles_devel/dotfiles --force
 
     cd ~/.dotfiles_devel
     ./bootstrap_vim.sh
-    git submodule init && git submodule update
 
 

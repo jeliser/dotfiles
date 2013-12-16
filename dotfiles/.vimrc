@@ -22,10 +22,10 @@ set backspace=indent,eol,start
 " Startup the Bundles
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 
-set rtp+=~/.vim/bundle/vundle
-call vundle#rc()
+"set rtp+=~/.vim/bundle/vundle
+"call vundle#rc()
 
-Bundle 'Valloric/YouCompleteMe'
+"Bundle 'Valloric/YouCompleteMe'
 
 " Remap the binding so you can jump into functions and back quickly.
 nnoremap <C-]> :YcmCompleter GoToDefinitionElseDeclaration<CR>

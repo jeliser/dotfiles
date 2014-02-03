@@ -2,6 +2,8 @@
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 " Settings
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+set filetype=off
+set filetype=on
 syntax enable
 set ruler
 set hlsearch

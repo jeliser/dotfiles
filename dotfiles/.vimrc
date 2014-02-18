@@ -18,7 +18,8 @@ set comments=
 set hid
 set nowrap
 set backspace=indent,eol,start
-
+set number
+set mouse=a
 
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 " Startup the Bundles

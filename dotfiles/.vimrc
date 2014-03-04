@@ -20,6 +20,7 @@ set nowrap
 set backspace=indent,eol,start
 set number
 set mouse=a
+set backup
 
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 " Startup the Bundles
@@ -31,6 +32,14 @@ call vundle#rc()
 " Remap the binding so you can jump into functions and back quickly.
 nnoremap <C-]> :YcmCompleter GoToDefinitionElseDeclaration<CR>
 "nnoremap <C-[> <C-o>
+
+" Set the UndoTree save directory
+if has("persistent_undo")
+  set undolevels=1000
+  set undoreload=10000
+  set undodir=~/.vim/.undodir/
+  set undofile
+endif
 
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 " Colors
@@ -83,6 +92,11 @@ map  <F9> :call RunMake()<CR>
 imap <F9> <ESC>:call RunMake()<CR>
 cmap <F9> <ESC><ESC>:call RunMake()<CR>
 
+" Run make and open the outputs in another tab
+map  <F10> :call UndoTree()<CR>
+imap <F10> <ESC>:call UndoTree()<CR>
+cmap <F10> <ESC><ESC>:call UndoTree()<CR>
+
 " Replace The DOS ^M
 map  <F11> :call Replace_M()<CR>
 imap <F11> <ESC>:call Replace_M()<CR>
@@ -116,6 +130,8 @@ fun! Replace_M()
   :exe '%s///ge'
 endfun
 
-
+fun! UndoTree()
+  :UndotreeToggle
+endfun
 
 

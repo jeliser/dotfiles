@@ -28,6 +28,7 @@ export SHELL=$system_shell
 bash -c "cd $HOME/.vim/bundle/YouCompleteMe; ./install.sh"
 
 # pathogen puts the .vim files in the vim path so methods can be executed
+mkdir -p ~/.vim/.undodir;
 mkdir -p ~/.vim/autoload;
 curl -Sso ~/.vim/autoload/pathogen.vim https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim
 

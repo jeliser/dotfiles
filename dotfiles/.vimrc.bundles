@@ -11,3 +11,5 @@ Bundle 'Valloric/YouCompleteMe'
 Bundle 'pydave/AsyncCommand'
 Bundle 'jimf/vim-async-make-green'
 Bundle 'jimf/vim-red-green'
+Bundle 'mbbill/undotree'
+

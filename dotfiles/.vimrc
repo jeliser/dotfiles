@@ -1,7 +1,7 @@
-
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 " Settings
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+execute pathogen#infect()
 set filetype=off
 set filetype=on
 syntax enable
@@ -25,10 +25,11 @@ set mouse=a
 " Startup the Bundles
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 
-"set rtp+=~/.vim/bundle/vundle
-"call vundle#rc()
+set rtp+=~/.vim/bundle/vundle
+call vundle#rc()
 
-"Bundle 'Valloric/YouCompleteMe'
+Bundle 'Valloric/YouCompleteMe'
+Bundle 'jimf/vim-async-make-green'
 
 " Remap the binding so you can jump into functions and back quickly.
 nnoremap <C-]> :YcmCompleter GoToDefinitionElseDeclaration<CR>
@@ -60,6 +61,26 @@ map  <C-L> zfa}<CR>
 imap <C-L> <ESC>zfa}<CR>
 cmap <C-L> <ESC><ESC>zfa}<CR>
 
+" Open new tab
+map  <F6> :tabe ./<CR>
+imap <F6> <ESC>:tabe ./<CR>
+cmap <F6> <ESC><ESC>:tabe ./<CR>
+
+" Previous tab
+map  <F7> :tabp<CR>
+imap <F7> <ESC>:tabp<CR>
+cmap <F7> <ESC><ESC>:tabp<CR>
+
+" Next time
+map  <F8> :tabn<CR>
+imap <F8> <ESC>:tabn<CR>
+cmap <F8> <ESC><ESC>:tabn<CR>
+
+" Run make and open the outputs in another tab
+map  <F9> :call RunMake()<CR>
+imap <F9> <ESC>:call RunMake()<CR>
+cmap <F9> <ESC><ESC>:call RunMake()<CR>
+
 " Replace The DOS ^M
 map  <F11> :call Replace_M()<CR>
 imap <F11> <ESC>:call Replace_M()<CR>
@@ -81,6 +102,11 @@ fun! Replace()
 		:exe '%s/'.expand('<cword>').'/'.s:word.'/ge'
 		:unlet! s:word
 	endif
+endfun
+
+fun! RunMake()
+"  :tabe ./ | make
+  :tabe ./ | make | vert copen | winc =
 endfun
 
 fun! Replace_M()

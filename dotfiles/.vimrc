@@ -28,9 +28,6 @@ set mouse=a
 set rtp+=~/.vim/bundle/vundle
 call vundle#rc()
 
-Bundle 'Valloric/YouCompleteMe'
-Bundle 'jimf/vim-async-make-green'
-
 " Remap the binding so you can jump into functions and back quickly.
 nnoremap <C-]> :YcmCompleter GoToDefinitionElseDeclaration<CR>
 "nnoremap <C-[> <C-o>
@@ -62,19 +59,24 @@ imap <C-L> <ESC>zfa}<CR>
 cmap <C-L> <ESC><ESC>zfa}<CR>
 
 " Open new tab
-map  <F6> :tabe ./<CR>
-imap <F6> <ESC>:tabe ./<CR>
-cmap <F6> <ESC><ESC>:tabe ./<CR>
+map  <F5> :tabe ./<CR>
+imap <F5> <ESC>:tabe ./<CR>
+cmap <F5> <ESC><ESC>:tabe ./<CR>
 
 " Previous tab
-map  <F7> :tabp<CR>
-imap <F7> <ESC>:tabp<CR>
-cmap <F7> <ESC><ESC>:tabp<CR>
+map  <F6> :tabp<CR>
+imap <F6> <ESC>:tabp<CR>
+cmap <F6> <ESC><ESC>:tabp<CR>
 
-" Next time
-map  <F8> :tabn<CR>
-imap <F8> <ESC>:tabn<CR>
-cmap <F8> <ESC><ESC>:tabn<CR>
+" Next tab
+map  <F7> :tabn<CR>
+imap <F7> <ESC>:tabn<CR>
+cmap <F7> <ESC><ESC>:tabn<CR>
+
+" Close tab
+map  <F8> :tabc<CR>
+imap <F8> <ESC>:tabc<CR>
+cmap <F8> <ESC><ESC>:tabc<CR>
 
 " Run make and open the outputs in another tab
 map  <F9> :call RunMake()<CR>
@@ -106,11 +108,14 @@ endfun
 
 fun! RunMake()
 "  :tabe ./ | make
-  :tabe ./ | make | vert copen | winc =
+"  :tabe ./ | make | vert copen | winc =
+  :tabe | exec "AsyncMake" | tabp
 endfun
 
 fun! Replace_M()
   :exe '%s///ge'
 endfun
+
+
 
 

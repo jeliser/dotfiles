@@ -63,6 +63,8 @@ alias svnstat='svn status | grep ^[^?]'
 alias pg='ps aux | grep '
 alias k9='sudo kill -9 '
 
+alias vim='vim --servername jeliser '
+
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert

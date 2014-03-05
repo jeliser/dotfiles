@@ -10,7 +10,7 @@ The newest revision of my dotfiles managed using [dotfiles](https://github.com/j
 ### Necessary for dotfiles
 
     sudo apt-get update && sudo apt-get upgrade
-    sudo apt-get install git python-pip build-essential cmake python-dev
+    sudo apt-get install git python-pip build-essential cmake python-dev curl
 
 
 

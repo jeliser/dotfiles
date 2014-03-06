@@ -20,8 +20,10 @@ set nowrap
 set backspace=indent,eol,start
 set number
 set mouse=a
-set backup
 set t_vb=
+
+set backup
+set backupdir=~/.vim/backup
 
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 " Startup the Bundles

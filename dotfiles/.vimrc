@@ -21,6 +21,7 @@ set backspace=indent,eol,start
 set number
 set mouse=a
 set backup
+set t_vb=
 
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 " Startup the Bundles

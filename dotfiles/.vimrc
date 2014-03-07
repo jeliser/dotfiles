@@ -25,6 +25,11 @@ set t_vb=
 set backup
 set backupdir=~/.vim/backup
 
+
+" Set syntax highlighting for particular files
+au BufReadPost SCons* set syntax=python
+au BufReadPost *.yaml set syntax=None
+
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 " Startup the Bundles
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"

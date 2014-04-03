@@ -137,8 +137,8 @@ fun! RunMake()
   if s:type == 1
     :tabe | exec "AsyncMake" | tabp
   else
-    echo "Missing a Makefile to build against"
-    ":tabe | call AsyncBuildCmd("scons -u -j 10 install_all") | tabp
+    "echo "Missing a Makefile to build against"
+    :tabe | call AsyncBuildCmd("scons -u -j 10 install_all") | tabp
   endif
 endfun
 

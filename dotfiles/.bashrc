@@ -3,7 +3,7 @@
 
 # Source distribution bashrc
 if [ -f /etc/bashrc ]; then
- . /etc/bashrc
+  . /etc/bashrc
 fi
 
 
@@ -34,19 +34,19 @@ shopt -s checkwinsize
 # Uncomment to enable color prompt
 color_prompt=yes
 if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;35m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\n> '
+  PS1='${debian_chroot:+($debian_chroot)}\[\033[01;35m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\n> '
 else
-    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+  PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
 unset color_prompt
 
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
 xterm*|rxvt*)
-    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
-    ;;
+  PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
+  ;;
 *)
-    ;;
+  ;;
 esac
 
 
@@ -58,12 +58,15 @@ alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
-alias scons='scons -j 10'
+alias sc='scons -u -j 10'
 alias svnstat='svn status | grep ^[^?]'
-alias pg='ps aux | grep '
-alias k9='sudo kill -9 '
+alias pg='ps aux | grep'
+alias k9='sudo kill -9'
 
-alias vim='vim --servername jeliser '
+# Determine if the clientserver option is available on the machine
+if [ `vim --version | grep "+clientserver" | wc -l` -gt 0 ]; then
+  alias vim='vim --servername jeliser '
+fi
 
 
 # Add an "alert" alias for long running commands.  Use like so:
@@ -90,7 +93,7 @@ shopt -u nullglob
 
 # Source any local definitions
 if [ -f ~/.bashrc.local ]; then
- . ~/.bashrc.local
+  . ~/.bashrc.local
 fi
 
 

@@ -131,7 +131,30 @@ endfun
 fun! RunMake()
 "  :tabe ./ | make
 "  :tabe ./ | make | vert copen | winc =
-  :tabe | exec "AsyncMake" | tabp
+
+  " TODO: There has to be a better way to do the comparision
+  let s:type=split(system("ls | grep Makefile | wc -l"), "\n")[0]
+  if s:type == 1
+    :tabe | exec "AsyncMake" | tabp
+  else
+    echo "Missing a Makefile to build against"
+    ":tabe | call AsyncBuildCmd("scons -u -j 10 install_all") | tabp
+  endif
+endfun
+
+" Run a command in an async tab with a window split
+fun! AsyncBuildCmd(target)
+  " TODO: This is causing an error to be thrown before showing the quick launch window
+  let title = 'Building Source: '
+  if a:target == ''
+      let title .= "(default)"
+  else
+      let title .= a:target
+  endif
+  call asynccommand#run(a:target, asynchandler#quickfix(&errorformat, title))
+  "let scons_cmd = "echo ".a:target
+"  let vim_func = asynchandler#split()
+"  call asynccommand#run(a:target, vim_func)
 endfun
 
 fun! Replace_M()

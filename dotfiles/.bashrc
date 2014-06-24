@@ -31,25 +31,6 @@ HISTFILESIZE=20000
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
 
-# Uncomment to enable color prompt
-color_prompt=yes
-if [ "$color_prompt" = yes ]; then
-  PS1='${debian_chroot:+($debian_chroot)}\[\033[01;35m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\n> '
-else
-  PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
-fi
-unset color_prompt
-
-# If this is an xterm set the title to user@host:dir
-case "$TERM" in
-xterm*|rxvt*)
-  PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
-  ;;
-*)
-  ;;
-esac
-
-
 # some more ls aliases
 alias ll='ls -alF'
 alias la='ls -A'
@@ -90,6 +71,30 @@ for file in "$HOME/.bash_profile.d"/*.sh; do
   source "$file"
 done
 shopt -u nullglob
+
+
+# Uncomment to enable color prompt
+color_prompt=yes
+if [ "$color_prompt" = yes ]; then
+  PS1='${debian_chroot:+($debian_chroot)}\[\033[01;35m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\n> '
+else
+  PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+fi
+unset color_prompt
+
+# If this is an xterm set the title to user@host:dir
+case "$TERM" in
+xterm*|rxvt*)
+  PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
+  ;;
+*)
+  ;;
+esac
+
+
+# Comment this line in order to stop the crazy command line
+ps1_set --prompt
+
 
 # Source any local definitions
 if [ -f ~/.bashrc.local ]; then

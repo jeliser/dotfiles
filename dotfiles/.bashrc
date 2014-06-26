@@ -43,6 +43,7 @@ alias sc='scons -u -j 10'
 alias svnstat='svn status | grep ^[^?]'
 alias pg='ps aux | grep'
 alias k9='sudo kill -9'
+alias tree="ls -R | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/   /' -e 's/-/|/'"
 
 # Determine if the clientserver option is available on the machine
 if [ `vim --version | grep "+clientserver" | wc -l` -gt 0 ]; then

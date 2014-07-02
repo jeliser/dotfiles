@@ -62,7 +62,7 @@ export PATH=/usr/local/bin/:$PATH
 
 # Some helpful functions
 svndiff() { vimdiff <(svn cat "$1") "$1"; }
-ag() { grep "$1" --exclude=\*.svn-base -n ./* $2; }
+ag() { grep "$1" --exclude=\*.svn-base -n ./* .* $2; }
 tree() { ls -R $1 | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/   /' -e 's/-/|/'; }
 
 

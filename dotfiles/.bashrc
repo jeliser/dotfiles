@@ -62,6 +62,8 @@ export PATH=/usr/local/bin/:$PATH
 
 # Some helpful functions
 svndiff() { vimdiff <(svn cat "$1") "$1"; }
+gitdiff() { git difftool -y --tool=vimdiff "$1"; }
+gitpatch() { git diff --no-ext-diff -w "$@" | vim -R -; }
 ag() { grep "$1" --exclude=\*.svn-base --exclude-dir=.. -n ./* .* $2; }
 tree() { ls -R $1 | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/   /' -e 's/-/|/'; }
 

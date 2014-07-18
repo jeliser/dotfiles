@@ -1,0 +1,324 @@
+[33mcommit 9752987c6b5251cff67c861d3a406d2944b872bc[m
+Author: Josh <jeliser@gmail.com>
+Date:   Fri Jul 18 08:34:12 2014 -0500
+
+    Added a gitdiff and gitpatch function.  The gitdiff will open up the diff in vimdiff so I can more easily look at the changes.
+
+[33mcommit 48c3cfada1e16c1e3ea676cf70b92df0b4361f70[m
+Author: Josh <jeliser@gmail.com>
+Date:   Fri Jul 18 08:13:50 2014 -0500
+
+    Add a directory exclusion to the ag script.  Stops the recursive search from going up and directory and then searching down again.  That was really aggrevating.
+
+[33mcommit 8aa94daa49dda75c248aba82a84cba567415a474[m
+Author: Josh <jeliser@gmail.com>
+Date:   Wed Jul 2 12:31:46 2014 -0500
+
+    Moved where the auto-bash tmux script is executed from.
+
+[33mcommit e4fb84b67ada9d513a387156a6723440faac61b7[m
+Author: Josh <jeliser@gmail.com>
+Date:   Wed Jul 2 10:42:05 2014 -0500
+
+    Added the search capabilty to include hidden directories
+
+[33mcommit d6e4e4314740b87f7391c11421c6e1534ad6d91d[m
+Author: Josh <jeliser@gmail.com>
+Date:   Mon Jun 30 14:41:38 2014 -0500
+
+    Generalized the tree script to allow an optional directory path
+
+[33mcommit b61ddcaa9bd5ed2c69d73c0e8ca6174756af47fe[m
+Author: Josh <jeliser@gmail.com>
+Date:   Thu Jun 26 17:04:03 2014 -0500
+
+    Updated to include a tree alias for listing the contents of a directory.  Kind of neat.
+
+[33mcommit 47484fc3425f266ddb09784de606419d9863a0c9[m
+Author: Josh <jeliser@gmail.com>
+Date:   Tue Jun 24 16:17:29 2014 -0500
+
+    Spruced up the command line to include some git love :)
+
+[33mcommit 18d126ed9e1ac8c04ad35eb20f5084290d73706d[m
+Author: Josh <jeliser@gmail.com>
+Date:   Tue Jun 24 11:17:03 2014 -0500
+
+    Fixed the tmux configuration to not allow repeat commands when swithcing panes.
+
+[33mcommit 3ce6c6067290f696d534c3b0951326590037e6ac[m
+Author: jeliser <jeliser@gmail.com>
+Date:   Tue Apr 22 13:01:12 2014 -0500
+
+    Simple changes
+
+[33mcommit ea9496d35ecbe873442874a7ae9072593620c3a5[m
+Author: jeliser <jeliser@gmail.com>
+Date:   Mon Apr 7 09:42:35 2014 -0500
+
+    tmux update
+
+[33mcommit 437c277327ef8496ddb421c65193a3d9bd09f70c[m
+Author: jeliser <jeliser@gmail.com>
+Date:   Thu Apr 3 12:38:33 2014 -0500
+
+    Ehh, it'll work for now.
+
+[33mcommit 596a332c1d49883172f1441e122999a3cefe22c5[m
+Author: jeliser <jeliser@gmail.com>
+Date:   Thu Apr 3 12:36:42 2014 -0500
+
+    Added a conditional build option to the function.  Doesn't work completely, but it'll do for now
+
+[33mcommit e05f4a84ab35511166db674e13f3e4053194c57c[m
+Author: jeliser <jeliser@gmail.com>
+Date:   Thu Apr 3 12:24:38 2014 -0500
+
+    Made some config updates
+
+[33mcommit e1291bb2c37c6c3d1c618f56654d478c24bd2be4[m
+Author: jeliser <jeliser@gmail.com>
+Date:   Wed Apr 2 09:16:07 2014 -0500
+
+    Added an initial tmux configuration with some of the configuration parameters I prefer.
+
+[33mcommit d88f1d8e7c29ea5b8bc1368791a5b7b470729fea[m
+Author: jeliser <jeliser@gmail.com>
+Date:   Mon Mar 17 16:14:11 2014 -0500
+
+    Added a tmux configuration file.  Need to update the keybinding to hopefully use ctrl+pgup and ctrl+pgdn
+
+[33mcommit 8999d135df3ce2dbf27fb69af2969b137d7f0565[m
+Author: Josh <jeliser>
+Date:   Fri Mar 7 11:15:59 2014 -0600
+
+    Fixing some vim synatx highlighting problems
+
+[33mcommit 9a2214199d1db99f1d9d6f6cbec77d32194bd4d7[m
+Author: Josh <jeliser>
+Date:   Thu Mar 6 14:40:49 2014 -0600
+
+    Fixed the vim backup so it stops creating new files all over the place
+
+[33mcommit 0381f81afdffc5ac566f8de199c4743300b762d9[m
+Author: Josh <jeliser>
+Date:   Thu Mar 6 14:20:48 2014 -0600
+
+    Added visual bell suppression
+
+[33mcommit 863bce995e1eecc78d00a536052e55d931dac123[m
+Author: Josh <jeliser>
+Date:   Thu Mar 6 10:08:16 2014 -0600
+
+    Stopping the visual bell alarm
+
+[33mcommit 78505a97fa0fd2f52fe222cbdaef291780bfe5c2[m
+Author: Josh <jeliser@gmail.com>
+Date:   Tue Mar 4 22:35:10 2014 -0600
+
+    Another apt-get update
+
+[33mcommit 59c7ff09f158c3539f1da4dfb31dbba4acb3466d[m
+Author: triterium <triterium@triterium-t42.(none)>
+Date:   Tue Mar 4 22:01:51 2014 -0600
+
+    Updated the installation instructions
+
+[33mcommit 9173a47f22e1e5c8269e9241d2db3ab9915515da[m
+Author: jeliser <jeliser@gmail.com>
+Date:   Tue Mar 4 14:11:35 2014 -0600
+
+    Added functionality for UndoTree
+
+[33mcommit a850454e2e31d2befd23b2d5f73d5cefe4b4f92d[m
+Author: jeliser <jeliser@gmail.com>
+Date:   Tue Mar 4 13:37:56 2014 -0600
+
+    Separated the install_vim to a new script.  Also updated the RunMake() function to run async in the background and put the outputs in a new tab
+
+[33mcommit 41228cf74f9d0c758dfc5f6c4edafb38ad7f04f0[m
+Author: jeliser <jeliser@gmail.com>
+Date:   Tue Mar 4 12:01:50 2014 -0600
+
+    Added more packages to the bundles.  Working on getting 'make' to build in the background and pop open a tab when completed.
+
+[33mcommit 3cf864eb799a44fad78e8d1c7699d6b02e28a6ca[m
+Author: jeliser <jeliser@gmail.com>
+Date:   Tue Feb 18 09:09:57 2014 -0600
+
+    Updates my vimrc
+
+[33mcommit b694cf803b0a0740064f294fff11f9b113a388d8[m
+Author: Josh <jeliser@gmail.com>
+Date:   Mon Feb 3 09:17:33 2014 -0600
+
+    Added some more shortcut bash aliases
+
+[33mcommit 30dccc3c029b3e908ab199f45a75ae8239676d14[m
+Author: Josh <jeliser@gmail.com>
+Date:   Mon Dec 16 11:53:15 2013 -0600
+
+    Adding more paths
+
+[33mcommit 3edb13fbe7e6870be1bcc0fd926943c98f4bfb7e[m
+Merge: 73ff904 bea5be6
+Author: Josh <jeliser@gmail.com>
+Date:   Mon Dec 16 11:52:21 2013 -0600
+
+    Merge branch 'master' of https://github.com/jeliser/dotfiles
+
+[33mcommit bea5be6aa48763a4b4bfa93d6cb1e1beb227574c[m
+Author: Josh <jeliser@gmail.com>
+Date:   Mon Dec 16 11:40:26 2013 -0600
+
+    Having problems commiting due to an outdated client.  Attempting on this machine
+
+[33mcommit 73ff904693cb7713bbd29e8618bcb3ddb3f3af7b[m
+Author: jeliser <jeliser@newton.(none)>
+Date:   Mon Dec 16 11:10:26 2013 -0600
+
+    Checking some vim changes
+
+[33mcommit 93da41494550358eef9ec24f9e555d7e05485dda[m
+Author: jeliser <jeliser@gmail.com>
+Date:   Tue Nov 26 15:02:18 2013 -0600
+
+    Update the bootstrap script
+
+[33mcommit 5709fbe5f9ff3b67638f3f1d416aad6746773416[m
+Author: jeliser <jeliser@gmail.com>
+Date:   Tue Nov 19 09:59:37 2013 -0600
+
+    Updating dircolors
+
+[33mcommit c17adeaceb95c119d13261a735ecadfd6bda6ed2[m
+Author: jeliser <jeliser@gmail.com>
+Date:   Mon Nov 18 11:23:17 2013 -0600
+
+    Added a bash_profile so .bashrc is loaded each time a new shell is created.  Found a machine that didn't have this by default.
+
+[33mcommit 414445d82491b8a64039ed3369ced36b034f8cd4[m
+Author: jeliser <jeliser@gmail.com>
+Date:   Fri Nov 15 16:00:07 2013 -0600
+
+    The quotes around the data files are not valid
+
+[33mcommit 8be033583cdf214be3cb9c72a8ada0621ef38f24[m
+Author: jeliser <nestinator@gmail.com>
+Date:   Fri Nov 15 10:43:57 2013 -0600
+
+    Color additions
+
+[33mcommit 19773c0ce2afa7b3a5d7d51f4bf6708d60ae4279[m
+Author: jeliser <nestinator@gmail.com>
+Date:   Fri Nov 15 10:37:58 2013 -0600
+
+    Move the dotfiles into a separate directory so I don't have to keep updating the .dotfilesrc file to exclude new files that I might add in the future
+
+[33mcommit a113c81ca8868d285f1ed193822ec267fb61ab5e[m
+Author: jeliser <nestinator@gmail.com>
+Date:   Fri Nov 15 09:36:28 2013 -0600
+
+    Updated the ack-grep script to support recursive and non-recursive
+
+[33mcommit bb5c3d1f3a1786803ab401d7f1904c8d36428c58[m
+Author: jeliser <nestinator@gmail.com>
+Date:   Fri Nov 15 09:30:31 2013 -0600
+
+    Changed an alias name
+
+[33mcommit da9ea907c965cdb79e4af5a98fcc137c3a353aa4[m
+Author: jeliser <jeliser@gmail.com>
+Date:   Wed Nov 13 08:14:06 2013 -0600
+
+    Added a bash function and update dircolors
+
+[33mcommit 3f8ade6546d7e849f9eb387144a742101a18be2d[m
+Author: jeliser <jeliser@gmail.com>
+Date:   Wed Nov 6 14:18:52 2013 -0600
+
+    Updated colors
+
+[33mcommit a56932357693bb5d39a5bc7091b404364e09e1f4[m
+Author: jeliser <jeliser@gmail.com>
+Date:   Wed Nov 6 12:16:31 2013 -0600
+
+    Added a script to load the dotfiles so I don't have type in the commends.  Also added a svn alias so I can ignore all the ? entries
+
+[33mcommit 0da425c1b605edcadd2d80068d6b89f63ba0d92c[m
+Author: jeliser <jeliser@gmail.com>
+Date:   Tue Nov 5 15:33:25 2013 -0600
+
+    Updated the bootstrap and README.  Ran on a new machine and the installation process worked well enough for the time being
+
+[33mcommit 0fad7fc3799344d8e8b4aeb26f9668a564ee40fb[m
+Author: jeliser <nestinator@gmail.com>
+Date:   Tue Nov 5 15:01:28 2013 -0600
+
+    Added another ignore
+
+[33mcommit 2285eb28b2d9a268701fec1362ce1bc3a71d095c[m
+Author: jeliser <nestinator@gmail.com>
+Date:   Tue Nov 5 15:00:41 2013 -0600
+
+    Added some bash profile settings and included installing vim from source so you can use YCM.  The script needs to be a bot more robust to running on Ubuntu and Fedora
+
+[33mcommit b09865e40ae315349215fc6c66b05b1b2b5e11a4[m
+Author: jeliser <nestinator@gmail.com>
+Date:   Tue Nov 5 14:30:38 2013 -0600
+
+    Added more bash options
+
+[33mcommit bfcf17c13de59fe236b126d30cf743bca66ccc43[m
+Author: jeliser <nestinator@gmail.com>
+Date:   Tue Nov 5 14:24:40 2013 -0600
+
+    Updated bashrc and ignore files
+
+[33mcommit 519145768525744dac2f2df1d866f2882ebf99e0[m
+Author: jeliser <nestinator@gmail.com>
+Date:   Mon Nov 4 14:24:45 2013 -0600
+
+    Added a temp bashrc
+
+[33mcommit 2c287bddd6c93ceae75d04114123a40c4140d2e0[m
+Author: jeliser <jeliser@gmail.com>
+Date:   Tue Oct 29 13:22:52 2013 -0500
+
+    Updated the README
+
+[33mcommit 643059c5e3b9933d6b216bc60e7782080a2271f5[m
+Author: jeliser <jeliser@gmail.com>
+Date:   Tue Oct 29 13:20:08 2013 -0500
+
+    Added bootstrapping of the vim profile
+
+[33mcommit 21f0ff0dd234b0238e47dd0896e03f4f365424f7[m
+Author: jeliser <jeliser@gmail.com>
+Date:   Tue Oct 29 12:39:16 2013 -0500
+
+    Added DIRCOLORS to the installation process
+
+[33mcommit 07bbde73baa0b76d78d2e1daf74efed893faa5de[m
+Author: jeliser <jeliser@gmail.com>
+Date:   Mon Oct 28 15:27:45 2013 -0500
+
+    Moving the root directory location
+
+[33mcommit bf06aa76843e2a65958457a6102e1d42a91c2960[m
+Author: jeliser <jeliser@gmail.com>
+Date:   Mon Oct 28 14:45:37 2013 -0500
+
+    Adding an ignore file to exclude temp folders and files
+
+[33mcommit 16786fe06c36f9454b548d0d35f37688fb8aeb21[m
+Author: vagrant <vagrant@vagrant-ubuntu-precise-adept.(none)>
+Date:   Mon Oct 28 14:28:41 2013 -0500
+
+    Added my initial vimrc check in
+
+[33mcommit d8c1bde8dddababf56db382e3c70d02530d2fb12[m
+Author: jeliser <jeliser@gmail.com>
+Date:   Fri Oct 18 09:03:59 2013 -0700
+
+    Initial commit

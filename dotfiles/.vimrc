@@ -66,6 +66,10 @@ hi cPreCondit   ctermfg=Cyan         cterm=none
 hi cDefine      ctermfg=Red          cterm=none
 
 
+if &diff
+  colorscheme evening
+endif
+
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 " Key Mappings
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"

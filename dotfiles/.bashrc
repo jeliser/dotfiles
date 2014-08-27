@@ -62,13 +62,21 @@ export PATH=/usr/local/bin/:$PATH
 
 # Some helpful functions
 svndiff() { vimdiff <(svn cat "$1") "$1"; }
+ag() { grep "$1" --exclude=\*.svn-base --exclude-dir=.. -n ./* .* $2; }
+tree() { ls -R $1 | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/   /' -e 's/-/|/'; }
+
+# Bunch of git command shortcuts
+gs() { git status -sb; }
+gits() { git status -sb; }
+gc() { git clean -dxf; }
+gitclean() { git clean -dxf; }
 gitdiff() { git difftool -y --tool=vimdiff "$1"; }
 gitpatch() { git diff --no-ext-diff -w "$@" | vim -R -; }
 gitcm() { git commit -m "$@"; }
 gitba() { git branch -a "$@"; }
 gitbl() { git branch -l "$@"; }
-ag() { grep "$1" --exclude=\*.svn-base --exclude-dir=.. -n ./* .* $2; }
-tree() { ls -R $1 | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/   /' -e 's/-/|/'; }
+gitcount() { git rev-list HEAD --count; }
+gitlog() { git log --no-merges; }
 
 
 # Read all the interesting bits from sub-files.
@@ -106,5 +114,11 @@ ps1_set --prompt
 if [ -f ~/.bashrc.local ]; then
   . ~/.bashrc.local
 fi
+
+
+# Example of auto-complete loading for git.  I added this to my .bashrc.local
+#if [ -f /home/eliserjm/mace_dev/tmp/git-1.8.5.1/contrib/completion/git-completion.bash ]; then
+#  . /home/eliserjm/mace_dev/tmp/git-1.8.5.1/contrib/completion/git-completion.bash
+#fi
 
 

@@ -76,7 +76,7 @@ gitcm() { git commit -m "$@"; }
 gitba() { git branch -a "$@"; }
 gitbl() { git branch -l "$@"; }
 gitcount() { git rev-list HEAD --count; }
-gitlog() { git log --no-merges; }
+gitlog() { git log --no-merges "$@"; }
 
 
 # Read all the interesting bits from sub-files.

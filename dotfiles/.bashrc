@@ -77,7 +77,13 @@ gitba() { git branch -a "$@"; }
 gitbl() { git branch -l "$@"; }
 gitcount() { git rev-list HEAD --count; }
 gitlog() { git log --no-merges "$@"; }
-gitsize() { git_size; }
+gitsize() {
+  if [ "$#" -ne 1 ]; then
+    git_size 10;
+  else
+    git_size $1
+  fi
+}
 
 
 # Read all the interesting bits from sub-files.

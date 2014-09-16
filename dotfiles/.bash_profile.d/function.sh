@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-extract () {
+extract() {
   if [ $# -ne 1 ]
   then
     echo "Error: No file specified."
@@ -26,7 +26,7 @@ extract () {
   fi
 }
 
-function ips {
+function ips() {
   ifconfig | grep "inet " | awk '{ print $2 }'
 }
 
@@ -34,7 +34,7 @@ function down4me() {
   curl -s "http://www.downforeveryoneorjustme.com/$1" | sed '/just you/!d;s/<[^>]*>//g'
 }
 
-function myip {
+function myip() {
   res=$(curl -s checkip.dyndns.org | grep -Eo '[0-9\.]+')
   echo "Your public IP is: ${bold_green} $res ${normal}"
 }

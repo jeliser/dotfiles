@@ -3,11 +3,11 @@
 extract () {
   if [ $# -ne 1 ]
   then
-echo "Error: No file specified."
+    echo "Error: No file specified."
     return 1
   fi
-if [ -f $1 ] ; then
-case $1 in
+  if [ -f $1 ] ; then
+    case $1 in
       *.tar.bz2) tar xvjf $1 ;;
       *.tar.gz) tar xvzf $1 ;;
       *.bz2) bunzip2 $1 ;;
@@ -21,13 +21,13 @@ case $1 in
       *.7z) 7z x $1 ;;
       *) echo "'$1' cannot be extracted via extract" ;;
     esac
-else
-echo "'$1' is not a valid file"
+  else
+    echo "'$1' is not a valid file"
   fi
 }
 
 function ips {
-        ifconfig | grep "inet " | awk '{ print $2 }'
+  ifconfig | grep "inet " | awk '{ print $2 }'
 }
 
 function down4me() {

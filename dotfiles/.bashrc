@@ -62,7 +62,7 @@ export PATH=/usr/local/bin/:$PATH
 
 # Some helpful functions
 svndiff() { vimdiff <(svn cat "$1") "$1"; }
-ag() { grep "$1" --exclude=\*.svn-base --exclude-dir=.. -n ./* .* $2; }
+ag() { grep "$1" --exclude=\*.svn-base --exclude-dir=.. -n .* $2; }
 tree() { ls -R $1 | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/   /' -e 's/-/|/'; }
 
 # Bunch of git command shortcuts
@@ -77,6 +77,7 @@ gitba() { git branch -a "$@"; }
 gitbl() { git branch -l "$@"; }
 gitcount() { git rev-list HEAD --count; }
 gitlog() { git log --no-merges "$@"; }
+gitsize() { git_size; }
 
 
 # Read all the interesting bits from sub-files.

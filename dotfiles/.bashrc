@@ -134,7 +134,7 @@ fi
 # Example of auto-generating a log with a JIRA ticket
 #gitcommit() {
 #  PREFIX=""
-#  HEADER="feature/JIRA-"
+#  HEADER="JIRA-"
 #  BRANCH_NAME=`git branch | grep "*" | awk '{print $2}'`
 #
 #  if [[ $BRANCH_NAME =~ $HEADER ]] ; then

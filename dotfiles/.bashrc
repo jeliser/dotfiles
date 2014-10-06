@@ -131,3 +131,17 @@ fi
 #fi
 
 
+# Example of auto-generating a log with a JIRA ticket
+#gitcommit() {
+#  PREFIX=""
+#  HEADER="feature/JIRA-"
+#  BRANCH_NAME=`git branch | grep "*" | awk '{print $2}'`
+#
+#  if [[ $BRANCH_NAME =~ $HEADER ]] ; then
+#    PREFIX="JBCP-`echo $BRANCH_NAME | sed "s/-/ /g" | awk '{print $2}'`: #comment "
+#  fi
+#
+#  git commit -m "$PREFIX$@"
+#}
+
+

@@ -86,6 +86,7 @@ gitsize() {
 }
 gitconflict() { vim $(git status -s | grep ^UU | cut -f 2 -d ' '); }
 alias gitcon='gitconflict'
+alias githist='git hist'
 
 
 # Read all the interesting bits from sub-files.

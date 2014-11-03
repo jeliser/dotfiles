@@ -1,7 +1,7 @@
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 " Settings
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-execute pathogen#infect()
+"execute pathogen#infect()
 set filetype=off
 set filetype=on
 syntax enable
@@ -36,7 +36,7 @@ au BufReadPost *.gradle set syntax=groovy
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 
 set rtp+=~/.vim/bundle/vundle
-call vundle#rc()
+"call vundle#rc()
 
 " Remap the binding so you can jump into functions and back quickly.
 nnoremap <C-]> :YcmCompleter GoToDefinitionElseDeclaration<CR>

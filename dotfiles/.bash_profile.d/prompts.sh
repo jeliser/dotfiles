@@ -48,58 +48,6 @@ ps1_identity()
   return 0
 }
 
-ps1_git()
-{
-  local branch="" line="" attr=""
-
-  shopt -s extglob # Important, for our nice matchers :)
-
-  if ! command -v git >/dev/null 2>&1 ; then
-    printf " \033[1;37m\033[41m[git not found]\033[m "
-    exit 0
-  fi
-
-  # First we determine the current git branch, if any.
-  while read -r line
-  do
-    case "${line}" in
-      [[=*=]][[:space:]]*) # on linux, man 7 regex
-        branch="${line/[[=*=]][[:space:]]/}"
-        ;;
-    esac
-  done < <(git branch 2>/dev/null)
-
-  # Now we display the branch.
-  sha1=($(git log --no-color -1 2>/dev/null))
-  sha1=${sha1[1]}
-  sha1=${sha1:0:7}
-
-  case ${branch} in
-   production|prod) attr="1;37m\033[" ; color=41 ;; # red
-   master|deploy)   color=31                     ;; # red
-   stage|staging)   color=33                     ;; # yellow
-   dev|development) color=34                     ;; # blue
-   next)            color=36                     ;; # gray
-   *)
-     if [[ -n "${branch}" ]] ; then # Feature Branch :)
-       color=32 # green
-     else
-       color=0 # reset
-     fi
-     ;;
-  esac
-
-  if [[ $color -gt 0 ]] ; then
-    if [[ -n $attr ]] ; then
-      printf "\[\033[%s%sm\](git:${branch}:$sha1)\[\033[0m\]" "${attr}" "${color}"
-    else
-      printf "(git:${branch}:${sha1}) " 
-    fi
-  fi
-
-  return 1
-}
-
 ps1_rvm()
 {
   if command -v rvm-prompt >/dev/null 2>/dev/null ; then
@@ -145,7 +93,7 @@ ps1_set()
     esac
   done
 
-  PS1="\n$(ps1_identity)\[\033[34m\]\$(ps1_git)\$(ps1_rvm)\[\033[0m\]${separator}${BLUE}${prompt_char} ${PS_CLEAR}> "
+  PS1="\n$(ps1_identity)\[\033[34m\]\$(ps1_rvm)\[\033[0m\]${separator}${BLUE}${prompt_char} ${PS_CLEAR}> "
 }
 
 ps2_set()

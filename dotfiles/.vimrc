@@ -1,7 +1,7 @@
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 " Settings
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-execute pathogen#infect()
+"execute pathogen#infect()
 set filetype=off
 set filetype=on
 syntax enable
@@ -35,11 +35,11 @@ au BufReadPost *.gradle set syntax=groovy
 " Startup the Bundles
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 
-set rtp+=~/.vim/bundle/vundle
-call vundle#rc()
+"set rtp+=~/.vim/bundle/vundle
+"call vundle#rc()
 
 " Remap the binding so you can jump into functions and back quickly.
-nnoremap <C-]> :YcmCompleter GoToDefinitionElseDeclaration<CR>
+"nnoremap <C-]> :YcmCompleter GoToDefinitionElseDeclaration<CR>
 "nnoremap <C-[> <C-o>
 
 " Set the UndoTree save directory

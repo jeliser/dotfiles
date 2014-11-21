@@ -86,7 +86,13 @@ gitsize() {
 }
 gitconflict() { vim $(git status -s | grep ^UU | cut -f 2 -d ' '); }
 alias gitcon='gitconflict'
-alias githist='git hist'
+githist() {
+  if [ "$#" -eq 1 ]; then
+    git hist | grep -i $1 | grep -v "Merge" | less -RS;
+  else
+    git hist;
+  fi
+}
 
 
 # Read all the interesting bits from sub-files.

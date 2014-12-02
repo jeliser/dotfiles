@@ -151,7 +151,7 @@ gitpick() {
   START=`gitstart ${SRC} ${PARENT}`
   END=`gitend ${SRC}`
 
-  echo "git cherry-pick ${START}..${END}"
+  git cherry-pick ${START}..${END}
 }
 
 

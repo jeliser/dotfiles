@@ -70,9 +70,7 @@ ps1_git()
   done < <(git branch 2>/dev/null)
 
   # Now we display the branch.
-  sha1=($(git log --no-color -1 2>/dev/null))
-  sha1=${sha1[1]}
-  sha1=${sha1:0:7}
+  sha1=($(git rev-parse --verify HEAD --short 2>/dev/null))
 
   case ${branch} in
    production|prod) attr="1;37m\033[" ; color=41 ;; # red
@@ -105,6 +103,13 @@ ps1_rvm()
   if command -v rvm-prompt >/dev/null 2>/dev/null ; then
     printf " $(rvm-prompt) "
   fi
+}
+
+ps1_ahead()
+{
+  ahead=`git status -sb 2>/dev/null | grep -o -P '(?<=\[).*(?=\])' | awk -F' ' '{printf"["$1" \033[32m"$2"\033[0m]"}'`
+  printf "${ahead}"
+  return 1
 }
 
 ps1_set()
@@ -145,7 +150,8 @@ ps1_set()
     esac
   done
 
-  PS1="\n$(ps1_identity)\[\033[34m\]\$(ps1_git)\$(ps1_rvm)\[\033[0m\]${separator}${BLUE}${prompt_char} ${PS_CLEAR}> "
+
+  PS1="\n$(ps1_identity)\[\033[34m\]\$(ps1_git)\$(ps1_rvm)\[\033[0m\]\$(ps1_ahead)${separator}${BLUE}${prompt_char} ${PS_CLEAR}> "
 }
 
 ps2_set()

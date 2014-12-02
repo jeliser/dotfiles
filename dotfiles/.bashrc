@@ -93,6 +93,66 @@ githist() {
     git hist;
   fi
 }
+gitstart() {
+  if [ "$#" -gt 2 ] || [ "$1" = "-h" ]; then
+    echo "Gets the inital commit of a branch"
+    echo " Usage: gitstart [<source_branch>] [<parent_branch>]"
+    echo " Usage: gitstart -h"
+    return
+  fi
+
+  if [ "$#" -eq 2 ]; then
+    SRC=$1
+    PARENT=$2
+    git rev-list --boundary $(git rev-parse --abbrev-ref ${SRC})...${PARENT} | grep ^- | cut -c2- | head -1
+  else
+    SRC=$1
+    git log --pretty=format:'[%H %P] %s' ${SRC} | grep -o -P '(?<=\[).*(?=\])' | grep -o -P ".{0,40} .{0,40} .{0,40}" -m 1 | awk -F' ' '{print $1}'
+  fi
+}
+gitend() {
+  if [ "$#" -gt 0 ] && [ "$1" = "-h" ]; then
+    echo "Gets the last commit of a branch"
+    echo " Usage: gitend [<source_branch>]"
+    echo " Usage: gitend -h"
+    return
+  fi
+
+  if [ "$#" -eq 1 ]; then
+    # Load the incoming branch name filter
+    NAME="$1"
+  else
+    # Use the current Git repo branch name
+    NAME=`git branch | grep '*' | awk -F' ' '{print $2}'`
+  fi
+
+  SHA=`git for-each-ref | grep ${NAME} | awk -F' ' '{print $1}' | uniq`
+  if [ `echo -e ${SHA} | wc -w` -gt 1 ]; then
+    echo "Too many branch matches."
+    echo -e "`git for-each-ref | grep ${NAME}`"
+    echo -e "\nUsage: gitsha <unique_branch_name>"
+  else 
+    echo ${SHA}
+  fi
+}
+gitpick() {
+  if [ "$#" -gt 2 ] || [ "$#" -lt 1 ] || [ "$1" = "-h" ]; then
+    echo "Gets the start/end commits of a branch and performs a 'git cherry-pick'"
+    echo "It is recommended to perform a 'git checkout -b <branch_name> before executing this command"
+    echo " Usage: gitpick <source_branch> [<parent_branch>]"
+    echo " Usage: gitpick -h"
+    return
+  fi
+
+  # Load the incoming branch names
+  SRC="$1"
+  PARENT="$2"
+  # Get the SHA commit hashes
+  START=`gitstart ${SRC} ${PARENT}`
+  END=`gitend ${SRC}`
+
+  echo "git cherry-pick ${START}..${END}"
+}
 
 
 # Read all the interesting bits from sub-files.

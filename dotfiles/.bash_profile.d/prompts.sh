@@ -105,10 +105,23 @@ ps1_rvm()
   fi
 }
 
-ps1_ahead()
+ps1_ahead_behind()
 {
-  ahead=`git status -sb 2>/dev/null | grep -o -P '(?<=\[).*(?=\])' | awk -F' ' '{printf"["$1" \033[32m"$2"\033[0m]"}'`
-  printf "${ahead}"
+  STATUS=`git status -sb 2>/dev/null | grep -o -P '(?<=\[).*(?=\])'`
+  AHEAD=`echo ${STATUS} | grep -o -P '(?<=ahead )[0-9]*'`
+  BEHIND=`echo ${STATUS} | grep -o -P '(?<=behind )[0-9]*'`
+  GREEN="\033[32m"
+  RED="\033[31m"
+  CLEAR="\033[0m"
+
+  if [ `echo ${AHEAD} | wc -w` -gt 0 ] && [ `echo ${BEHIND} | wc -w` -gt 0 ]; then
+    printf "[ahead ${GREEN}${AHEAD}${CLEAR}, behind ${RED}${BEHIND}${CLEAR}]"
+  elif [ `echo ${AHEAD} | wc -w` -gt 0 ]; then
+    printf "[ahead ${GREEN}${AHEAD}${CLEAR}]"
+  elif [ `echo ${BEHIND} | wc -w` -gt 0 ]; then
+    printf "[behind ${RED}${BEHIND}${CLEAR}]"
+  fi
+
   return 1
 }
 
@@ -151,7 +164,7 @@ ps1_set()
   done
 
 
-  PS1="\n$(ps1_identity)\[\033[34m\]\$(ps1_git)\$(ps1_rvm)\[\033[0m\]\$(ps1_ahead)${separator}${BLUE}${prompt_char} ${PS_CLEAR}> "
+  PS1="\n$(ps1_identity)\[\033[34m\]\$(ps1_git)\$(ps1_rvm)\[\033[0m\]\$(ps1_ahead_behind)${separator}${BLUE}${prompt_char} ${PS_CLEAR}> "
 }
 
 ps2_set()

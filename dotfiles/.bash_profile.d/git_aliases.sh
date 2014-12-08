@@ -10,10 +10,59 @@ gitba() { git branch -a "$@"; }
 gitbl() { git branch -l "$@"; }
 gitcount() { git rev-list HEAD --count; }
 gitlog() { git log --no-merges "$@"; }
-gitshowdeleted() { git log --diff-filter=D --summary | grep delete; }
-gitsd() { gitshowdeleted; }
 
-# Do a vimdiff git confluct merging
+# Switch to the git root directory
+gitroot() { cd $(git rev-parse --show-toplevel); }
+
+# Show a deleted file
+gitshowdeleted() { 
+  if [ "$#" -eq 0 ]; then
+    git log --diff-filter=D --summary | grep delete; 
+  else
+    git log --diff-filter=D --summary | grep delete | grep $@;
+  fi
+}
+gitsd() { gitshowdeleted $@; }
+
+# Get the second to last commit of a deleted file.
+# The last commit is actually deleting the file, so you can apply it,
+#   so apply the second to last commit.
+gitgetdeleted() {
+  WD=$( pwd )
+  gitroot;
+  SHA=$( gitlc $1 1 )
+  git checkout ${SHA} -- $1
+  cd ${WD};
+}
+gitgd() { gitgetdeleted $@; }
+
+
+# Get the SHA list of when a file was modified.
+gitfilecommit() {
+  WD=$( pwd );
+  gitroot;
+  git log --pretty=oneline --all -- $@;
+  cd ${WD};
+}
+gitfc() { gitfilecommit $@; }
+
+# Find the last (or nth to last) commit of a file
+gitlastcommit() { 
+  if [ "$#" -eq 1 ]; then
+    gitfilecommit $1 | head -n 1 | awk -F' ' '{print $1}';
+  elif [ "$#" -eq 2 ]; then
+    let "CNT=$2 + 1"
+    gitfilecommit $1 | head -n ${CNT} | tail -n 1 | awk -F' ' '{print $1}';
+  else
+    echo "Gets the last (or nth to last) commit that a file was changed"
+    echo " Usage: gitlastcommit <file_path> [num_commits_from_end]"
+    return
+  fi
+}
+gitlc() { gitlastcommit $@; }
+
+
+# Do a vimdiff git conflict merging
 gitconflict() { vim $(git status -s | grep ^UU | cut -f 2 -d ' '); }
 alias gitcon='gitconflict'
 

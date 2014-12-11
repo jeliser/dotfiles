@@ -6,4 +6,7 @@ adbc() {
   adb connect $@
 }
 
+adbd() {
+  adb disconnect
+}
 

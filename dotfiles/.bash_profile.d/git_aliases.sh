@@ -5,7 +5,7 @@ gc() { git clean -dxf; }
 gitclean() { git clean -dxf; }
 gitdiff() { git difftool -y --tool=vimdiff "$1"; }
 gitpatch() { git diff --no-ext-diff -w "$@" | vim -R -; }
-gitcm() { git commit -m "$@"; }
+gitcm() { gitcommit $@; }
 gitba() { git branch -a "$@"; }
 gitbl() { git branch -l "$@"; }
 gitcount() { git rev-list HEAD --count; }

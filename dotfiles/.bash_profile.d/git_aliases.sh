@@ -1,15 +1,31 @@
 # Bunch of git command shortcuts
 gs() { git status -sb; }
 gits() { git status -sb; }
-gc() { git clean -dxf; }
 gitclean() { git clean -dxf; }
 gitdiff() { git difftool -y --tool=vimdiff "$1"; }
 gitpatch() { git diff --no-ext-diff -w "$@" | vim -R -; }
-gitcm() { gitcommit $@; }
 gitba() { git branch -a "$@"; }
 gitbl() { git branch -l "$@"; }
 gitcount() { git rev-list HEAD --count; }
 gitlog() { git log --no-merges "$@"; }
+
+# Automagic ticket commenting!
+gitcommit() {
+  PREFIX=""
+  HEADER=${TICKET_NAME}
+  BRANCH_NAME=$( git branch | grep "*" | awk '{print $2}' )
+
+  if [[ ${BRANCH_NAME} =~ ${HEADER} ]] ; then
+    PREFIX="${HEADER}$( echo ${BRANCH_NAME} | sed "s/-/ /g" | awk '{print $2}' ): #comment "
+  fi
+
+  git commit -m "${PREFIX}$@"
+}
+gitcm() { gitcommit "$@"; }
+gitc() { gitcommit "$@"; }
+gc() { gitcommit "$@"; }
+
+# Push only this branch to the remote
 pushme() { 
   REMOTE=$( git for-each-ref --format='%(upstream:short)' $( git symbolic-ref -q HEAD ) | awk -F'/' '{print $1}' )
   BRANCH=$( git rev-parse --abbrev-ref HEAD )
@@ -40,7 +56,7 @@ gitgetdeleted() {
   git checkout ${SHA} -- $1
   cd ${WD};
 }
-gitgd() { gitgetdeleted $@; }
+gitgd() { gitgetdeleted "$@"; }
 
 
 # Get the SHA list of when a file was modified.
@@ -50,7 +66,7 @@ gitfilecommit() {
   git log --pretty=oneline --all -- $@;
   cd ${WD};
 }
-gitfc() { gitfilecommit $@; }
+gitfc() { gitfilecommit "$@"; }
 
 # Find the last (or nth to last) commit of a file
 gitlastcommit() { 
@@ -65,7 +81,7 @@ gitlastcommit() {
     return
   fi
 }
-gitlc() { gitlastcommit $@; }
+gitlc() { gitlastcommit "$@"; }
 
 
 # Do a vimdiff git conflict merging

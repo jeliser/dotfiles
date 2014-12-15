@@ -43,6 +43,7 @@ alias sc='scons -u -j 10'
 alias svnstat='svn status | grep ^[^?]'
 alias pg='ps aux | grep'
 alias k9='sudo kill -9'
+alias jb='cd - >/dev/null 2>&1;cd -'  # Jump back
 
 # Determine if the clientserver option is available on the machine
 if [ `vim --version | grep "+clientserver" | wc -l` -gt 0 ]; then
@@ -107,18 +108,5 @@ fi
 #  . /home/eliserjm/mace_dev/tmp/git-1.8.5.1/contrib/completion/git-completion.bash
 #fi
 
-
-# Example of auto-generating a log with a JIRA ticket
-#gitcommit() {
-#  PREFIX=""
-#  HEADER="JIRA-"
-#  BRANCH_NAME=`git branch | grep "*" | awk '{print $2}'`
-#
-#  if [[ $BRANCH_NAME =~ $HEADER ]] ; then
-#    PREFIX="JBCP-`echo $BRANCH_NAME | sed "s/-/ /g" | awk '{print $2}'`: #comment "
-#  fi
-#
-#  git commit -m "$PREFIX$@"
-#}
 
 

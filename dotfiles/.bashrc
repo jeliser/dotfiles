@@ -65,6 +65,14 @@ svndiff() { vimdiff <(svn cat "$1") "$1"; }
 pg() { ps aux | grep "$@" | grep -v "grep"; }
 ag() { grep "$1" --exclude=\*.svn-base --exclude-dir=.. -n .* $2; }
 tree() { ls -R $1 | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/   /' -e 's/-/|/'; }
+laptop() {
+  IP=$( nslookup ${LAPTOP_HOSTNAME} | grep Address | tail -1 | awk -F' ' '{print $NF}' )
+  if [ "$#" -gt 0 ]; then
+    ssh $1@${IP}
+  else
+    ssh ${IP}
+  fi
+}
 
 # Read all the interesting bits from sub-files.
 shopt -s nullglob

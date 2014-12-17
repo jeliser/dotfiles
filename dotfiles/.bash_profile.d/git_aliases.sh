@@ -2,12 +2,39 @@
 gs() { git status -sb; }
 gits() { git status -sb; }
 gitclean() { git clean -dxf; }
-gitdiff() { git difftool -y --tool=vimdiff "$1"; }
 gitpatch() { git diff --no-ext-diff -w "$@" | vim -R -; }
 gitba() { git branch -a "$@"; }
 gitbl() { git branch -l "$@"; }
 gitcount() { git rev-list HEAD --count; }
 gitlog() { git log --no-merges "$@"; }
+
+alias gitcut='cut -f 2 -d " "'
+
+# Changing the git diff tool open up the changes in vim with tabs!
+gitdiff() {
+  FILELIST=$( git status -sb | grep " M " | awk -F' ' '{print $NF}' )
+  FORALL=""
+  CNT=1
+  
+  IFS=$'\n'
+  for FILE in ${FILELIST}; do
+    # This definately assumes the gits status and git diff lists are in the same order.  They appear to be.
+    # Since files and be the same name, but different directories, this way was needed to ensure matching files.
+    GITFILE=$( git diff --name-only | head -${CNT} | tail -1 )
+    TMP=/tmp/${CNT}_$( echo ${GITFILE} | awk -F'/' '{print $NF}' )
+    git show HEAD:${GITFILE} > ${TMP}
+    if [ ${CNT} -gt 1 ]; then
+      FORALL=${FORALL}"|tabnew|"
+    fi
+    FORALL=${FORALL}"e ${FILE}|diffthis|vnew ${TMP}|set ro|diffthis"
+    if [ "$#" -gt 0 ]; then
+      echo $( pwd )/$FILE " " ${GITFILE} " " ${TMP}
+    fi
+    CNT=$((CNT+1))
+  done
+
+  vim -c "${FORALL}|tabn"
+}
 
 # Automagic ticket commenting!
 gitcommit() {
@@ -83,9 +110,12 @@ gitlastcommit() {
 }
 gitlc() { gitlastcommit "$@"; }
 
+# List all of the files in conflict
+gitconflictlist() { git status -s | grep "[AU][ADU] \|[U][DU ] "; }
+alias gitconlist='gitconflictlist'
 
 # Do a vimdiff git conflict merging
-gitconflict() { vim $(git status -s | grep ^UU | cut -f 2 -d ' '); }
+gitconflict() { vim $(git status -s | grep "UU \|AA " | cut -f 2 -d ' '); }
 alias gitcon='gitconflict'
 
 # Do a bit of git history filtering

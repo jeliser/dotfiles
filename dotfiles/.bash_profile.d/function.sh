@@ -47,3 +47,13 @@ function mkcd() {
 function lsgrep(){
   ls | grep "$*"
 }
+
+laptop() {
+  IP=$( nslookup ${LAPTOP_HOSTNAME} | grep Address | tail -1 | awk -F' ' '{print $NF}' )
+  if [ "$#" -gt 0 ]; then
+    ssh $1@${IP}
+  else
+    ssh ${IP}
+  fi
+}
+

@@ -41,8 +41,8 @@ alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 alias sc='scons -u -j 10'
 alias svnstat='svn status | grep ^[^?]'
-alias pg='ps aux | grep'
 alias k9='sudo kill -9'
+alias jb='cd - >/dev/null 2>&1;cd -'  # Jump back
 
 # Determine if the clientserver option is available on the machine
 if [ `vim --version | grep "+clientserver" | wc -l` -gt 0 ]; then
@@ -62,32 +62,9 @@ export PATH=/usr/local/bin/:$PATH
 
 # Some helpful functions
 svndiff() { vimdiff <(svn cat "$1") "$1"; }
+pg() { ps aux | grep "$@" | grep -v "grep"; }
 ag() { grep "$1" --exclude=\*.svn-base --exclude-dir=.. -n .* $2; }
 tree() { ls -R $1 | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/   /' -e 's/-/|/'; }
-
-# Bunch of git command shortcuts
-gs() { git status -sb; }
-gits() { git status -sb; }
-gc() { git clean -dxf; }
-gitclean() { git clean -dxf; }
-gitdiff() { git difftool -y --tool=vimdiff "$1"; }
-gitpatch() { git diff --no-ext-diff -w "$@" | vim -R -; }
-gitcm() { git commit -m "$@"; }
-gitba() { git branch -a "$@"; }
-gitbl() { git branch -l "$@"; }
-gitcount() { git rev-list HEAD --count; }
-gitlog() { git log --no-merges "$@"; }
-gitsize() {
-  if [ "$#" -ne 1 ]; then
-    git_size 10;
-  else
-    git_size $1
-  fi
-}
-gitconflict() { vim $(git status -s | grep ^UU | cut -f 2 -d ' '); }
-alias gitcon='gitconflict'
-alias githist='git hist'
-
 
 # Read all the interesting bits from sub-files.
 shopt -s nullglob
@@ -131,18 +108,5 @@ fi
 #  . /home/eliserjm/mace_dev/tmp/git-1.8.5.1/contrib/completion/git-completion.bash
 #fi
 
-
-# Example of auto-generating a log with a JIRA ticket
-#gitcommit() {
-#  PREFIX=""
-#  HEADER="JIRA-"
-#  BRANCH_NAME=`git branch | grep "*" | awk '{print $2}'`
-#
-#  if [[ $BRANCH_NAME =~ $HEADER ]] ; then
-#    PREFIX="JBCP-`echo $BRANCH_NAME | sed "s/-/ /g" | awk '{print $2}'`: #comment "
-#  fi
-#
-#  git commit -m "$PREFIX$@"
-#}
 
 

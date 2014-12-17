@@ -114,8 +114,27 @@ gitlc() { gitlastcommit "$@"; }
 gitconflictlist() { git status -s | grep "[AU][ADU] \|[U][DU ] "; }
 alias gitconlist='gitconflictlist'
 
-# Do a vimdiff git conflict merging
-gitconflict() { vim $(git status -s | grep "UU \|AA " | cut -f 2 -d ' '); }
+# Opens the conflicting files in a tabbed vim session
+gitconflict() { 
+
+  FILELIST=$( git status -sb | grep "UU \|AA " | awk -F' ' '{print $NF}' )
+  FORALL=""
+  CNT=1
+  
+  IFS=$'\n'
+  for FILE in ${FILELIST}; do
+    if [ ${CNT} -gt 1 ]; then
+      FORALL=${FORALL}"|tabnew|"
+    fi
+    FORALL=${FORALL}"e ${FILE}"
+    if [ "$#" -gt 0 ]; then
+      echo $( pwd )/$FILE " " ${GITFILE} " " ${TMP}
+    fi
+    CNT=$((CNT+1))
+  done
+
+  vim -c "${FORALL}|tabn|/<<<<"
+}
 alias gitcon='gitconflict'
 
 # Do a bit of git history filtering

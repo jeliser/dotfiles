@@ -38,6 +38,12 @@ gitdiff() {
 
 # Automagic ticket commenting!
 gitcommit() {
+  # Sanity check that a comment was provided.
+  if [ "$#" -lt 1 ]; then
+    echo "Please supply a commit log comment."
+    return
+  fi
+
   PREFIX=""
   HEADER=${TICKET_NAME}
   BRANCH_NAME=$( git branch | grep "*" | awk '{print $2}' )

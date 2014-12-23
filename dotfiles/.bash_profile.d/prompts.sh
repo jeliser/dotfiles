@@ -59,18 +59,9 @@ ps1_git()
     exit 0
   fi
 
-  # First we determine the current git branch, if any.
-  while read -r line
-  do
-    case "${line}" in
-      [[=*=]][[:space:]]*) # on linux, man 7 regex
-        branch="${line/[[=*=]][[:space:]]/}"
-        ;;
-    esac
-  done < <(git branch 2>/dev/null)
-
-  # Now we display the branch.
-  sha1=($(git rev-parse --verify HEAD --short 2>/dev/null))
+  # Get the branch and SHA values
+  branch=$( git branch 2>/dev/null | grep "*" | awk -F' ' '{print $NF}' )
+  sha1=$( git rev-parse --verify HEAD --short 2>/dev/null )
 
   case ${branch} in
    production|prod) attr="1;37m\033[" ; color=41 ;; # red

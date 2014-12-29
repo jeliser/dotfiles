@@ -43,6 +43,7 @@ alias sc='scons -u -j 10'
 alias svnstat='svn status | grep ^[^?]'
 alias k9='sudo kill -9'
 alias jb='cd - >/dev/null 2>&1;cd -'  # Jump back
+alias sb='source ~/.bashrc'
 
 # Determine if the clientserver option is available on the machine
 if [ `vim --version | grep "+clientserver" | wc -l` -gt 0 ]; then
@@ -63,7 +64,7 @@ export PATH=/usr/local/bin/:$PATH
 # Some helpful functions
 svndiff() { vimdiff <(svn cat "$1") "$1"; }
 pg() { ps aux | grep "$@" | grep -v "grep"; }
-ag() { grep "$1" --exclude=\*.svn-base --exclude-dir=.. -n .* $2; }
+ag() { grep "$1" --exclude=\*.svn-base --exclude-dir=.. --exclude-dir=.git --exclude=\*.swp -n .* $2; }
 tree() { ls -R $1 | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/   /' -e 's/-/|/'; }
 
 # Read all the interesting bits from sub-files.

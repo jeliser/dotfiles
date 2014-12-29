@@ -7,12 +7,22 @@ gitba() { git branch -a "$@"; }
 gitbl() { git branch -l "$@"; }
 gitcount() { git rev-list HEAD --count; }
 gitlog() { git log --no-merges "$@"; }
+gitls() { git ls-files; }
+gitlsu() { git ls-files --others; }
 
 alias gitcut='cut -f 2 -d " "'
 
+# List the unstaged files
+gitunstaged() { git status -sb | grep ".M "; }
+gu() { gitunstaged; }
+
+# Stage the unstaged files
+gitunstagedadd() { gitunstaged | grep ".M " | awk -F' ' '{print $NF}' | xargs git add ; }
+guadd() { gitunstagedadd; }
+
 # Changing the git diff tool open up the changes in vim with tabs!
 gitdiff() {
-  FILELIST=$( git status -sb | grep " M " | awk -F' ' '{print $NF}' )
+  FILELIST=$( git status -sb | grep ".M " | awk -F' ' '{print $NF}' )
   FORALL=""
   CNT=1
   
@@ -117,8 +127,12 @@ gitlastcommit() {
 gitlc() { gitlastcommit "$@"; }
 
 # List all of the files in conflict
-gitconflictlist() { git status -s | grep "[AU][ADU] \|[U][DU ] "; }
+gitconflictlist() { git status -s | grep "[ADU][ADU] \|[U][DU ] "; }
 alias gitconlist='gitconflictlist'
+
+# List all of the files in conflict
+gitconflictadd() { git status -s | grep "[ADU][ADU] \|[U][DU ] " | awk -F' ' '{print $NF}' | xargs git add; }
+alias gitconadd='gitconflictadd'
 
 # Opens the conflicting files in a tabbed vim session
 gitconflict() { 
@@ -139,7 +153,7 @@ gitconflict() {
     CNT=$((CNT+1))
   done
 
-  vim -c "${FORALL}|tabn|/<<<<"
+  vim -c "${FORALL}|tabn"
 }
 alias gitcon='gitconflict'
 

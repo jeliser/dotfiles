@@ -64,7 +64,7 @@ export PATH=/usr/local/bin/:$PATH
 # Some helpful functions
 svndiff() { vimdiff <(svn cat "$1") "$1"; }
 pg() { ps aux | grep "$@" | grep -v "grep"; }
-ag() { grep "$1" --exclude=\*.svn-base --exclude-dir=.. --exclude-dir=.git -n .* $2; }
+ag() { grep "$1" --exclude=\*.svn-base --exclude-dir=.. --exclude-dir=.git --exclude=\*.swp -n .* $2; }
 tree() { ls -R $1 | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/   /' -e 's/-/|/'; }
 
 # Read all the interesting bits from sub-files.

@@ -1,6 +1,7 @@
+export TMUX=
 
 SESSIONNAME="Base_View"
-tmux has-session -t $SESSIONNAME >> /dev/null
+tmux has-session -t $SESSIONNAME 2>/dev/null
 
 if [ $? -ne 0 ]
   then

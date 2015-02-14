@@ -1,7 +1,7 @@
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 " Settings
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-execute pathogen#infect()
+"execute pathogen#infect()
 set filetype=off
 set filetype=on
 syntax enable

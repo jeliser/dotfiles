@@ -1,7 +1,7 @@
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 " Settings
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-execute pathogen#infect()
+"execute pathogen#infect()
 set filetype=off
 set filetype=on
 syntax enable
@@ -21,6 +21,7 @@ set backspace=indent,eol,start
 set number
 set mouse=a
 set t_vb=
+set laststatus=2
 
 set backup
 set backupdir=~/.vim/backup

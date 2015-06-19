@@ -81,6 +81,11 @@ map  <C-L> zfa}<CR>
 imap <C-L> <ESC>zfa}<CR>
 cmap <C-L> <ESC><ESC>zfa}<CR>
 
+" Remove line numbers
+map  <F4> :set nonumber<CR>
+imap <F4> <ESC>:set nonumber<CR>
+cmap <F4> <ESC><ESC>:set nonumber<CR>
+
 " Open new tab
 map  <F5> :tabe ./<CR>
 imap <F5> <ESC>:tabe ./<CR>

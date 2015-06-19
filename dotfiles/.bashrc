@@ -45,6 +45,7 @@ alias k9='sudo kill -9'
 alias jb='cd - >/dev/null 2>&1;cd -'  # Jump back
 alias sb='source ~/.bashrc'
 alias ssh='ssh -X'
+alias wget='wget -c' # wget --continue
 
 # Determine if the clientserver option is available on the machine
 if [ `vim --version | grep "+clientserver" | wc -l` -gt 0 ]; then

@@ -71,7 +71,9 @@ ps1_git()
     color="\033[0;36m"
   fi
 
-  printf "$color(git:${branch}:${sha1}) " 
+  if [[ -n ${branch} ]] ; then
+    printf "$color(git:${branch}:${sha1}) "
+  fi
 
   return 1
 }

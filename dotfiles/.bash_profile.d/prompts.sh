@@ -1,28 +1,5 @@
 #!/usr/bin/env bash
 
-#
-# Source this file in your ~/.bash_profile or interactive startup file.
-# This is done like so:
-#
-#    [[ -s "$HOME/.rvm/contrib/ps1_functions" ]] &&
-#      source "$HOME/.rvm/contrib/ps1_functions"
-#
-# Then in order to set your prompt you simply do the following for example
-#
-# Examples:
-#
-#   ps1_set --prompt ∫
-#
-#   or
-#
-#   ps1_set --prompt ∴
-#
-# This will yield a prompt like the following, for example,
-#
-# 00:00:50 wayneeseguin@GeniusAir:~/projects/db0/rvm/rvm  (git:master:156d0b4)  ruby-1.8.7-p334@rvm
-# ∴
-#
-
 RED="\[\033[0;31m\]"
 GREEN="\[\033[0;32m\]"
 BROWN="\[\033[0;33m\]"
@@ -76,6 +53,13 @@ ps1_git()
   fi
 
   return 1
+}
+
+ps1_svn()
+{
+  # Kind of a temporary placeholder
+  REVISION=$( svn info | grep Revision | awk '{print $2}' )
+  BRANCH=$( svn info | grep URL | sed -n -e 's/^.*svn\///p' )
 }
 
 ps1_rvm()

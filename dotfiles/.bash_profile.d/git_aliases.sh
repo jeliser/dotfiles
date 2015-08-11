@@ -58,7 +58,7 @@ gitcommit() {
   HEADER=${TICKET_NAME}
   BRANCH_NAME=$( git branch | grep "*" | awk '{print $2}' )
 
-  if [[ ${BRANCH_NAME} =~ ${HEADER} ]] ; then
+  if [[ -n ${HEADER} && ${BRANCH_NAME} =~ ${HEADER} ]] ; then
     PREFIX="${HEADER}$( echo ${BRANCH_NAME} | sed "s/-/ /g" | awk '{print $2}' ): #comment "
   fi
 

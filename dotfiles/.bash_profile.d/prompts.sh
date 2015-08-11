@@ -63,28 +63,15 @@ ps1_git()
   branch=$( git branch 2>/dev/null | grep "*" | awk -F' ' '{print $NF}' )
   sha1=$( git rev-parse --verify HEAD --short 2>/dev/null )
 
-  case ${branch} in
-   production|prod) attr="1;37m\033[" ; color=41 ;; # red
-   master|deploy)   color=31                     ;; # red
-   stage|staging)   color=33                     ;; # yellow
-   dev|development) color=34                     ;; # blue
-   next)            color=36                     ;; # gray
-   *)
-     if [[ -n "${branch}" ]] ; then # Feature Branch :)
-       color=32 # green
-     else
-       color=0 # reset
-     fi
-     ;;
-  esac
-
-  if [[ $color -gt 0 ]] ; then
-    if [[ -n $attr ]] ; then
-      printf "\[\033[%s%sm\](git:${branch}:$sha1)\[\033[0m\]" "${attr}" "${color}"
-    else
-      printf "(git:${branch}:${sha1}) " 
-    fi
+  if [[ -z ${branch} ]] ; then
+    color="\033[0;31m"
+  elif [[ ${branch} == "master" ]] ; then
+    color="\033[0;32m"
+  else
+    color="\033[0;36m"
   fi
+
+  printf "$color(git:${branch}:${sha1}) " 
 
   return 1
 }

@@ -1,6 +1,6 @@
 
 [alias]
-  hist = log --color --pretty=format:\"%C(yellow)%h%C(reset) %C(blue)%<(25)[%an]%C(reset) %s%C(bold red)%d%C(reset) %C(green)%ad%C(reset)\" --relative-date --decorate
+  hist = log --color --pretty=format:\"%C(yellow)%h%C(reset) %C(cyan)%<(25)[%an]%C(reset) %s%C(bold red)%d%C(reset) %C(green)%ad%C(reset)\" --relative-date --decorate
   unstage = reset HEAD --
   restore = checkout --
   cn = commit --no-verify

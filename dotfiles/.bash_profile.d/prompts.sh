@@ -57,9 +57,33 @@ ps1_git()
 
 ps1_svn()
 {
-  # Kind of a temporary placeholder
-  REVISION=$( svn info | grep Revision | awk '{print $2}' )
-  BRANCH=$( svn info | grep URL | sed -n -e 's/^.*svn\///p' )
+  revision=$( svn info | grep Revision | awk '{print $2}' )
+  branch=$( svn info | grep URL | sed -n -e 's/^.*svn\///p' )
+
+  if [[ -z ${branch} ]] ; then
+    color="\033[0;31m"
+  elif [[ ${branch} =~ "trunk" ]] ; then
+    color="\033[0;32m"
+  else
+    color="\033[0;36m"
+  fi
+
+  if [[ -n ${branch} ]] ; then
+    printf "$color(svn:${branch}:${revision}) "
+  fi
+
+  return 1
+}
+
+ps1_cm() {
+  if [[ $( git status 2>/dev/null | wc -m ) -gt 0 ]] ; then 
+    ps1_git
+  elif [[ $( svn info 2>&1 | grep "is not a working copy" | wc -l ) -eq 0 ]] ; then
+    ps1_svn
+  else
+    # There is no source control to show status for
+    printf ""
+  fi
 }
 
 ps1_rvm()
@@ -80,9 +104,9 @@ ps1_ahead_behind()
 
   if [ `echo ${AHEAD} | wc -w` -gt 0 ] && [ `echo ${BEHIND} | wc -w` -gt 0 ]; then
     printf "[ahead ${GREEN}${AHEAD}${CLEAR}, behind ${RED}${BEHIND}${CLEAR}]"
-  elif [ `echo ${AHEAD} | wc -w` -gt 0 ]; then
+  elif [ `echo ${AHEAD} | wc -w` -gt 0 ] ; then
     printf "[ahead ${GREEN}${AHEAD}${CLEAR}]"
-  elif [ `echo ${BEHIND} | wc -w` -gt 0 ]; then
+  elif [ `echo ${BEHIND} | wc -w` -gt 0 ] ; then
     printf "[behind ${RED}${BEHIND}${CLEAR}]"
   fi
 
@@ -128,7 +152,7 @@ ps1_set()
   done
 
 
-  PS1="\n$(ps1_identity)\[\033[34m\]\$(ps1_git)\$(ps1_rvm)\[\033[0m\]\$(ps1_ahead_behind)${separator}${BLUE}${prompt_char} ${PS_CLEAR}> "
+  PS1="\n$(ps1_identity)\[\033[34m\]\$(ps1_cm)\$(ps1_rvm)\[\033[0m\]\$(ps1_ahead_behind)${separator}${BLUE}${prompt_char} ${PS_CLEAR}> "
 }
 
 ps2_set()

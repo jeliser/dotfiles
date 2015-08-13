@@ -31,5 +31,5 @@ bash -c "cd $HOME/.vim/bundle/YouCompleteMe; ./install.sh"
 mkdir -p ~/.vim/.undodir;
 mkdir -p ~/.vim/backup;
 mkdir -p ~/.vim/autoload;
-curl -Sso ~/.vim/autoload/pathogen.vim https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim
+wget https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim -O ~/.vim/autoload/pathogen.vim
 

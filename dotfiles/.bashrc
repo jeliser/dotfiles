@@ -59,8 +59,7 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 
 
 # User specific aliases and functions
-export PATH=/usr/local/bin/svn/bin:$PATH
-export PATH=/usr/local/bin/:$PATH
+export PATH=$HOME/local/bin:/usr/local/bin:/usr/local/bin/svn/bin:$PATH
 
 
 # Some helpful functions

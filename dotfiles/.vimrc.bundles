@@ -8,8 +8,8 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 Bundle 'scrooloose/nerdtree'
 Bundle 'Valloric/YouCompleteMe'
-Bundle 'pydave/AsyncCommand'
-Bundle 'jimf/vim-async-make-green'
-Bundle 'jimf/vim-red-green'
+"Bundle 'pydave/AsyncCommand'
+"Bundle 'jimf/vim-async-make-green'
+"Bundle 'jimf/vim-red-green'
 Bundle 'mbbill/undotree'
 

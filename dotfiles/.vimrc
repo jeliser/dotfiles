@@ -5,6 +5,7 @@
 set filetype=off
 set filetype=on
 syntax enable
+filetype plugin indent on 
 set ruler
 set hlsearch
 set showcmd

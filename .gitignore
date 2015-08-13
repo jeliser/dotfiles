@@ -1,4 +1,5 @@
 .ssh
+cmake*
 git*
 vim*
 *.swp

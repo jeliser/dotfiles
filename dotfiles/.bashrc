@@ -60,6 +60,8 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 
 # User specific aliases and functions
 export PATH=$HOME/local/bin:/usr/local/bin:/usr/local/bin/svn/bin:$PATH
+# Force git to always use the CLI.  I dislike the OpenSSH popup dialog
+export GIT_ASKPASS=
 
 
 # Some helpful functions

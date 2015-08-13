@@ -25,7 +25,7 @@ export SHELL=$system_shell
 
 # Install dependacies for YouCompleteMe
 # TODO: Check the dir or for a .install file to see if this should be executed
-bash -c "cd $HOME/.vim/bundle/YouCompleteMe; ./install.sh"
+bash -c "cd $HOME/.vim/bundle/YouCompleteMe; ./install.sh --clang-completer"
 
 # pathogen puts the .vim files in the vim path so methods can be executed
 mkdir -p ~/.vim/.undodir;

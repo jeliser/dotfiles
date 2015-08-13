@@ -1,4 +1,4 @@
 .ssh
-vim74
-vim-7.4.tar.bz2
+git*
+vim*
 *.swp

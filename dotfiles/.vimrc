@@ -40,6 +40,8 @@ au BufReadPost *.gradle set syntax=groovy
 set rtp+=~/.vim/bundle/vundle
 call vundle#rc()
 let g:ycm_confirm_extra_conf = 0
+let g:ycm_enable_diagnostic_signs = 0
+let g:ycm_enable_diagnostic_highlighting = 0
 
 " Remap the binding so you can jump into functions and back quickly.
 "nnoremap <C-]> :YcmCompleter GoToDefinitionElseDeclaration<CR>

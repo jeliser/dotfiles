@@ -30,7 +30,7 @@ set backupdir=~/.vim/backup
 
 " Set syntax highlighting for particular files
 au BufReadPost SCons* set syntax=python
-au BufReadPost *.yaml set syntax=None
+au BufReadPost *.yaml set syntax=yaml
 au BufReadPost *.gradle set syntax=groovy
 
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"

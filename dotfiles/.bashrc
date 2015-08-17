@@ -40,6 +40,7 @@ alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 alias sc='scons -u -j 10'
+alias scd='sc --with-debug'
 alias svnstat='svn status | grep ^[^?]'
 alias k9='sudo kill -9'
 alias jb='cd - >/dev/null 2>&1;cd -'  # Jump back

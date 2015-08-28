@@ -47,6 +47,8 @@ alias jb='cd - >/dev/null 2>&1;cd -'  # Jump back
 alias sb='source ~/.bashrc'
 alias ssh='ssh -X'
 alias wget='wget -c' # wget --continue
+alias cgdb='cgdb --args'
+alias dbg='\cgdb -d /opt/gdb-7.6/bin/gdb --args'
 
 # Determine if the clientserver option is available on the machine
 if [ `vim --version | grep "+clientserver" | wc -l` -gt 0 ]; then

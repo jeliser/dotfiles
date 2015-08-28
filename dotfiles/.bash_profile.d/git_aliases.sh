@@ -72,8 +72,8 @@ gc() { gitcommit "$@"; }
 pushme() { 
   REMOTE=$( git for-each-ref --format='%(upstream:short)' $( git symbolic-ref -q HEAD ) | awk -F'/' '{print $1}' )
   BRANCH=$( git rev-parse --abbrev-ref HEAD )
-  echo "Executing command: git push ${REMOTE} ${BRANCH}"
-  git push ${REMOTE} ${BRANCH}
+  echo "Executing command: git push ${REMOTE} ${BRANCH} $@"
+  git push ${REMOTE} ${BRANCH} $@
 }
 
 # Switch to the git root directory

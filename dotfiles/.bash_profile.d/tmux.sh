@@ -18,6 +18,9 @@ if [ $? -ne 0 ]
     #tmux select-pane -t 3
     #tmux resize-pane -U 8
     tmux attach -t $SESSIONNAME
+elif [ $( tmux ls | grep attach | wc -l ) -eq 0  ]
+  then
+    tmux attach
 fi
 
 

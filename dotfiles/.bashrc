@@ -39,16 +39,30 @@ alias ls='ls --color=always'
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
-alias sc='scons -u -j 10'
-alias scd='sc --with-debug'
-alias svnstat='svn status | grep ^[^?]'
-alias k9='sudo kill -9'
+
+alias k9='kill -9'
+alias sk9='sudo kill -9'
 alias jb='cd - >/dev/null 2>&1;cd -'  # Jump back
 alias sb='source ~/.bashrc'
 alias ssh='ssh -X'
 alias wget='wget -c' # wget --continue
+
+alias sc='scons -u -j 10'
+alias scd='sc --with-debug'
+alias svnstat='svn status | grep ^[^?]'
+
 alias cgdb='cgdb --args'
 alias dbg='\cgdb -d /opt/gdb-7.6/bin/gdb --args'
+
+alias clist='circusctl list'
+alias cstat='circusctl status'
+alias cinfo='cstat'
+alias cquit='circusctl quit'
+alias crestart='circusctl restart'
+alias cstop='circusctl stop'
+alias cstart='circusctl start'
+alias cr='crestart'
+
 
 # Determine if the clientserver option is available on the machine
 if [ `vim --version | grep "+clientserver" | wc -l` -gt 0 ]; then
@@ -70,6 +84,7 @@ export GIT_ASKPASS=
 # Some helpful functions
 svndiff() { vimdiff <(svn cat "$1") "$1"; }
 pg() { ps aux | grep "$@" | grep -v "grep"; }
+pk() { kill -9 $( pidof $@ ); }
 ag() { grep "$1" --exclude=\*.svn-base --exclude-dir=.. --exclude-dir=.git --exclude=\*.swp -n .* $2; }
 tree() { ls -R $1 | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/   /' -e 's/-/|/'; }
 

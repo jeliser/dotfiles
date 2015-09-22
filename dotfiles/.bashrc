@@ -42,7 +42,7 @@ alias egrep='egrep --color=auto'
 
 alias k9='kill -9'
 alias sk9='sudo kill -9'
-alias jb='cd - >/dev/null 2>&1;cd -'  # Jump back
+alias jb='cd >/dev/null 2>&1;cd -'  # Jump back
 alias sb='source ~/.bashrc'
 alias ssh='ssh -X'
 alias wget='wget -c' # wget --continue
@@ -63,6 +63,11 @@ alias cstop='circusctl stop'
 alias cstart='circusctl start'
 alias cr='crestart'
 
+showlog() { watch "sort -k 1n -k 2n -s $1* | tail $2 $3"; }
+alias sl='showlog'
+
+alias netudp='netstat -apue'
+alias nettcp='netstat -apte'
 
 # Determine if the clientserver option is available on the machine
 if [ `vim --version | grep "+clientserver" | wc -l` -gt 0 ]; then

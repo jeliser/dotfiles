@@ -54,6 +54,7 @@ alias svnstat='svn status | grep ^[^?]'
 alias cgdb='cgdb --args'
 alias dbg='\cgdb -d /opt/gdb-7.6/bin/gdb --args'
 
+alias ctop='circus-top'
 alias clist='circusctl list'
 alias cstat='circusctl status'
 alias cinfo='cstat'
@@ -63,11 +64,13 @@ alias cstop='circusctl stop'
 alias cstart='circusctl start'
 alias cr='crestart'
 
-showlog() { watch "sort -k 1n -k 2n -s $1* | tail $2 $3"; }
+showlog() { watch "sort -k 1 -k 2 -s $1* | tail $2 $3"; }
 alias sl='showlog'
 
 alias netudp='netstat -apue'
 alias nettcp='netstat -apte'
+
+udi() { udevadm info -a -p $( udevadm info -q path -n $1 ); }
 
 # Determine if the clientserver option is available on the machine
 if [ `vim --version | grep "+clientserver" | wc -l` -gt 0 ]; then

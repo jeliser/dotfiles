@@ -81,6 +81,13 @@ pushme() {
   git push ${REMOTE} ${BRANCH} $@
 }
 
+# Push only this branch to the remote and update
+pushorigin() { 
+  BRANCH=$( git rev-parse --abbrev-ref HEAD )
+  echo "Executing command: git push origin ${BRANCH} -u $@"
+  git push origin ${BRANCH} -u $@
+}
+
 # Switch to the git root directory
 gitroot() { cd $(git rev-parse --show-toplevel); }
 

@@ -51,7 +51,7 @@ alias sc='scons -u -j 10'
 alias scd='sc --with-debug'
 alias svnstat='svn status | grep ^[^?]'
 
-alias cgdb='cgdb --args'
+#alias cgdb='cgdb --args'
 alias dbg='\cgdb -d /opt/gdb-7.6/bin/gdb --args'
 
 alias ctop='circus-top'
@@ -87,6 +87,7 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 export PATH=$HOME/local/bin:/usr/local/bin:/usr/local/bin/svn/bin:$PATH
 # Force git to always use the CLI.  I dislike the OpenSSH popup dialog
 export GIT_ASKPASS=
+export TICKET_NAME=feature
 
 
 # Some helpful functions
@@ -94,6 +95,7 @@ svndiff() { vimdiff <(svn cat "$1") "$1"; }
 pg() { ps aux | grep "$@" | grep -v "grep"; }
 pk() { kill -9 $( pidof $@ ); }
 ag() { grep "$1" --exclude=\*.svn-base --exclude-dir=.. --exclude-dir=.git --exclude=\*.swp -n .* $2; }
+gr() { ag "$1" -r | column -t -s ':' | awk '{ print $1 }' | uniq | xargs sed -i "s/$1/$2/g"; }
 tree() { ls -R $1 | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/   /' -e 's/-/|/'; }
 
 # Read all the interesting bits from sub-files.

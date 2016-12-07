@@ -13,6 +13,7 @@ set background=dark
 set title
 set shell=bash
 set tabstop=2
+set softtabstop=2
 set shiftwidth=2
 set expandtab
 set comments=

@@ -57,8 +57,8 @@ ps1_git()
 
 ps1_svn()
 {
-  revision=$( svn info | grep Revision | awk '{print $2}' )
-  branch=$( svn info | grep URL | sed -n -e 's/^.*svn\///p' )
+  revision=$( svn info 2>&1 | grep Revision | awk '{print $2}' )
+  branch=$( svn info 2>&1 | grep URL | sed -n -e 's/^.*svn\///p' )
 
   if [[ -z ${branch} ]] ; then
     color="\033[0;31m"

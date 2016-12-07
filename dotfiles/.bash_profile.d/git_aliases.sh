@@ -73,6 +73,8 @@ gitcm() { gitcommit "$@"; }
 gitc() { gitcommit "$@"; }
 gc() { gitcommit "$@"; }
 
+pushupstream() { git push origin upstream/master:master; }
+
 # Push only this branch to the remote
 pushme() { 
   REMOTE=$( git for-each-ref --format='%(upstream:short)' $( git symbolic-ref -q HEAD ) | awk -F'/' '{print $1}' )

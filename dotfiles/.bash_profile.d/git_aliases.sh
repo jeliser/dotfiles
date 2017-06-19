@@ -9,6 +9,7 @@ gitcount() { git rev-list HEAD --count; }
 gitlog() { git log --no-merges "$@"; }
 gitls() { git ls-files; }
 gitlsu() { git ls-files --others; }
+gitbranchname() { git branch 2>/dev/null | grep "*" | awk -F' ' '{print $NF}'; }
 
 alias gitcut='cut -f 2 -d " "'
 

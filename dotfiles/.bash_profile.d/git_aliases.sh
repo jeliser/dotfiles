@@ -74,6 +74,12 @@ gitcm() { gitcommit "$@"; }
 gitc() { gitcommit "$@"; }
 gc() { gitcommit "$@"; }
 
+# Export the current branch
+gitexport() { 
+  BRANCH=$( git rev-parse --abbrev-ref HEAD )
+  mkdir -p $1 | git archive ${BRANCH} | tar -x -C $1
+}
+
 pushupstream() { git push origin upstream/master:master; }
 
 # Push only this branch to the remote

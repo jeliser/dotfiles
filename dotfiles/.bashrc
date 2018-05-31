@@ -66,6 +66,8 @@ alias cr='crestart'
 
 alias afacts='ansible -m setup -c local -i "localhost" 127.0.0.1'
 
+alias clean_untracked='git clean -xdff'
+
 showlog() { watch "sort -k 1 -k 2 -s $1* | tail $2 $3"; }
 alias sl='showlog'
 
@@ -89,14 +91,14 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 export PATH=$HOME/local/bin:/usr/local/bin:/usr/local/bin/svn/bin:$PATH
 # Force git to always use the CLI.  I dislike the OpenSSH popup dialog
 export GIT_ASKPASS=
-export TICKET_NAME=feature
+export TICKET_NAME=empty
 
 
 # Some helpful functions
 svndiff() { vimdiff <(svn cat "$1") "$1"; }
 pg() { ps aux | grep "$@" | grep -v "grep"; }
 pk() { kill -9 $( pidof $@ ); }
-ag() { grep "$1" --exclude=\*.svn-base --exclude-dir=.. --exclude-dir=.git --exclude=\*.ipynb --exclude=\*.swp -n .* $2; }
+ag() { grep "$1" --exclude=\*.svn-base --exclude-dir=.. --exclude-dir=.git --exclude-dir=.work* --exclude=\*.ipynb --exclude=\*.swp -n .* $2; }
 lslong() { find $1/ -printf "%p\t%s\n"; }
 gr() { ag "$1" -r | column -t -s ':' | awk '{ print $1 }' | uniq | xargs sed -i "s/$1/$2/g"; }
 tree() { ls -R $1 | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/   /' -e 's/-/|/'; }

@@ -33,6 +33,7 @@ set backupdir=~/.vim/backup
 au BufReadPost SCons* set syntax=python
 au BufReadPost *.yaml set syntax=yaml
 au BufReadPost *.gradle set syntax=groovy
+au BufRead,BufNewFile *.icc set filetype=cpp
 
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 " Startup the Bundles

@@ -76,6 +76,8 @@ alias nettcp='netstat -apte'
 
 udi() { udevadm info -a -p $( udevadm info -q path -n $1 ); }
 
+demangle() { nm $1 | c++filt; }
+
 # Determine if the clientserver option is available on the machine
 if [ `vim --version | grep "+clientserver" | wc -l` -gt 0 ]; then
   alias vim='vim --servername jeliser '

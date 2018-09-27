@@ -92,6 +92,10 @@ endif
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 " Key Mappings
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+"
+"Make shift-insert work like in Xterm
+map <S-Insert> <MiddleMouse>
+map! <S-Insert> <MiddleMouse> 
 
 " Folding Up Functions zfa}
 map  <C-L> zfa}<CR>

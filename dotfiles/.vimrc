@@ -123,15 +123,10 @@ map  <F8> :tabc<CR>
 imap <F8> <ESC>:tabc<CR>
 cmap <F8> <ESC><ESC>:tabc<CR>
 
-" Run make and open the outputs in another tab
-map  <F9> :call RunMake()<CR>
-imap <F9> <ESC>:call RunMake()<CR>
-cmap <F9> <ESC><ESC>:call RunMake()<CR>
-
-" Run make and open the outputs in another tab
-map  <F10> :call UndoTree()<CR>
-imap <F10> <ESC>:call UndoTree()<CR>
-cmap <F10> <ESC><ESC>:call UndoTree()<CR>
+" Paste the contents from the system clipboard into vim
+map <F9> i<C-r>* <ESC>
+imap <F9> <C-r>*
+cmap <F9> <C-r>*
 
 " Replace The DOS ^M
 map  <F11> :call Replace_M()<CR>

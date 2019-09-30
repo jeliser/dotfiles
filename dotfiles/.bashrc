@@ -74,9 +74,23 @@ alias sl='showlog'
 alias netudp='netstat -apue'
 alias nettcp='netstat -apte'
 
+create_ve() {
+  # Sanity check that an enviroment was set
+  if [ "$#" -lt 1 ]; then
+    echo "Please supply python environment to create."
+    return
+  fi
+  virtualenv -p python3.7 ~/.python_env/$1;
+}
+delete_ve() {
+  rm -rf ~/.python_env
+}
+ve() { source ~/.python_env/$1/bin/activate; }
+
 udi() { udevadm info -a -p $( udevadm info -q path -n $1 ); }
 
 demangle() { nm $1 | c++filt; }
+show_exit() { echo $?; }
 
 # Determine if the clientserver option is available on the machine
 if [ `vim --version | grep "+clientserver" | wc -l` -gt 0 ]; then
@@ -93,7 +107,7 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 export PATH=$HOME/local/bin:/usr/local/bin:/usr/local/bin/svn/bin:$PATH
 # Force git to always use the CLI.  I dislike the OpenSSH popup dialog
 export GIT_ASKPASS=
-export TICKET_NAME=empty
+export TICKET_NAME=feature
 
 
 # Some helpful functions

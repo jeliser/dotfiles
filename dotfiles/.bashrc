@@ -81,11 +81,23 @@ create_ve() {
     return
   fi
   virtualenv -p python3.7 ~/.python_env/$1;
+  ve $1;
 }
 delete_ve() {
   rm -rf ~/.python_env
 }
 ve() { source ~/.python_env/$1/bin/activate; }
+rebuild_ve() {
+  # Sanity check that an enviroment was set
+  if [ "$#" -lt 1 ]; then
+    echo "Please supply python environment to create."
+    return
+  fi
+
+  deactivate 2>/dev/null;
+  rm -rf ~/.python_env/$1 && create_ve $1 && ve $1;
+}
+alias rve='rebuild_ve'
 
 udi() { udevadm info -a -p $( udevadm info -q path -n $1 ); }
 
@@ -107,7 +119,7 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 export PATH=$HOME/local/bin:/usr/local/bin:/usr/local/bin/svn/bin:$PATH
 # Force git to always use the CLI.  I dislike the OpenSSH popup dialog
 export GIT_ASKPASS=
-export TICKET_NAME=feature
+export TICKET_NAME=/
 
 
 # Some helpful functions

@@ -2,7 +2,7 @@ alias d='docker'
 alias dc='docker container'
 alias di='docker image'
 
-docker_prune_all() { docker container stop $(docker container ls -aq); docker container rm $(docker container ls -aq); }
+docker_prune_all() { echo $( docker ps -aq ) | xargs docker stop; echo $( docker ps -aq ) | xargs docker rm;}
 
 docker_new_instance() {
   # Check the wildcard case or the case where nothing was supplied.

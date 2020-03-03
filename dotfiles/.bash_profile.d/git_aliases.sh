@@ -57,19 +57,7 @@ gitcommit() {
     return
   fi
 
-  PREFIX=""
-  HEADER=${TICKET_NAME}
-  BRANCH_NAME=$( git branch | grep "*" | awk '{print $2}' )
-
-  if [[ -n ${HEADER} && ${BRANCH_NAME} =~ ${HEADER} ]] ; then
-    # Old example: export TICKET_NAME=PROJECT
-    # Old example: branch names: feature/PROJECT-1234-creating-super-awesome-feature
-    #PREFIX="${HEADER}$( echo ${BRANCH_NAME} | sed "s/-/ /g" | awk '{print $2}' ): #comment "
-    # New example: export TICKET_NAME=feature
-    # Old example: branch names: feature/lc-cam-init
-    PREFIX="$( echo ${BRANCH_NAME} | sed "s/\// /g" | awk '{print $2}' ): "
-  fi
-
+  PREFIX="$( git branch | grep "*" | awk '{print $2}' | sed 's:.*/::' | awk -F'-' '{print $1 "-" $2}' ): "
   git commit -m "${PREFIX}$@"
 }
 gitcm() { gitcommit "$@"; }

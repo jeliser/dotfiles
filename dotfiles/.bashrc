@@ -80,24 +80,16 @@ create_ve() {
     echo "Please supply python environment to create."
     return
   fi
-  virtualenv -p python3.7 ~/.python_env/$1;
-  ve $1;
+  deactivate 2>/dev/null;
+  rm -rf ~/.python_env/$1;
+  virtualenv -p python3.7 ~/.python_env/$1 && ve $1;
 }
+alias cve='create_ve'
 delete_ve() {
   rm -rf ~/.python_env
 }
+alias dve='delete_ve'
 ve() { source ~/.python_env/$1/bin/activate; }
-rebuild_ve() {
-  # Sanity check that an enviroment was set
-  if [ "$#" -lt 1 ]; then
-    echo "Please supply python environment to create."
-    return
-  fi
-
-  deactivate 2>/dev/null;
-  rm -rf ~/.python_env/$1 && create_ve $1 && ve $1;
-}
-alias rve='rebuild_ve'
 
 udi() { udevadm info -a -p $( udevadm info -q path -n $1 ); }
 

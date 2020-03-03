@@ -30,11 +30,12 @@ set backupdir=~/.vim/backup
 
 
 " Set syntax highlighting for particular files
-au BufReadPost SCons* set syntax=python
-au BufReadPost *.yaml set syntax=yaml
-au BufReadPost Jenkins* set syntax=groovy
-au BufReadPost *.gradle set syntax=groovy
-au BufRead,BufNewFile *.icc set filetype=cpp
+au BufRead,BufNewFile,BufReadPost SCons* set syntax=python
+au BufRead,BufNewFile,BufReadPost *.yaml set syntax=yaml
+au BufRead,BufNewFile,BufReadPost Jenkins* set syntax=groovy
+au BufRead,BufNewFile,BufReadPost *.gradle set syntax=groovy
+au BufRead,BufNewFile,BufReadPost *.icc set filetype=cpp
+au BufRead,BufNewFile,BufReadPost *.dockerfile set filetype=dockerfile
 
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 " Startup the Bundles

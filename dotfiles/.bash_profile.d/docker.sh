@@ -22,6 +22,7 @@ docker_new_instance() {
   IFS=' '
   read -a strarr <<< "${MATCH}"
   CONTAINER="${strarr[0]}:${strarr[1]}"
+  echo "Loading: ${CONTAINER}"
   docker exec -it $( docker run -dit ${CONTAINER} bash ) /bin/bash;
 }
 
@@ -30,4 +31,6 @@ docker_connect() { docker exec -it $@ /bin/bash; }
 alias docker_attach='docker_connect'
 alias da='docker_attach'
 
+docker_bash() { docker run -it $@; }
+alias db='docker_bash'
 

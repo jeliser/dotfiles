@@ -57,7 +57,7 @@ gitcommit() {
     return
   fi
 
-  PREFIX="$( git branch | grep "*" | awk '{print $2}' | sed 's:.*/::' | awk -F'-' '{print $1 "-" $2}' ): "
+  PREFIX="$( git branch | grep "*" | awk '{print $2}' | sed 's:.*/::' | awk -F'-' '{print $1 "-" $2}' | sed 's:-$::' ): "
   git commit -m "${PREFIX}$@"
 }
 gitcm() { gitcommit "$@"; }

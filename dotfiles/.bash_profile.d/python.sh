@@ -4,9 +4,15 @@ create_ve() {
     echo "Please supply python environment to create."
     return
   fi
+
+  PYTHON='python3.7'
+  if [ "$#" -eq 2 ]; then
+    PYTHON=$2
+  fi
+
   deactivate 2>/dev/null;
   rm -rf ~/.python_env/$1;
-  virtualenv -p python3.7 ~/.python_env/$1 && ve $1;
+  virtualenv -p ${PYTHON} ~/.python_env/$1 && ve $1;
 }
 alias cve='create_ve'
 

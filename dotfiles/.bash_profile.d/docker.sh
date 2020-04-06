@@ -2,6 +2,16 @@ alias d='docker'
 alias dc='docker container'
 alias di='docker image'
 
+docker_connect() { docker exec -it $@ /bin/bash; }
+
+alias docker_attach='docker_connect'
+alias da='docker_attach'
+
+docker_run() { docker run -it $@; }
+alias dr='docker_run'
+docker_bash() { dr --entrypoint "/bin/bash" $@; }
+alias db='docker_bash'
+
 docker_prune_all_containers() { echo $( docker ps -aq ) | xargs docker stop; echo $( docker ps -aq ) | xargs docker rm;}
 docker_prune_dangling_images() { docker system prune; }
 docker_prune_all_images() { docker system prune -a; }
@@ -28,11 +38,4 @@ docker_new_instance() {
   docker exec -it $( docker run -dit ${CONTAINER} bash ) /bin/bash;
 }
 
-docker_connect() { docker exec -it $@ /bin/bash; }
-
-alias docker_attach='docker_connect'
-alias da='docker_attach'
-
-docker_bash() { docker run -it $@; }
-alias db='docker_bash'
 

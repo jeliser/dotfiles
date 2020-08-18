@@ -2,7 +2,7 @@
 gs() { git status -sb; }
 gits() { git status -sb; }
 gitclean() { git clean -dxf; }
-gitcleanbranches() { git fetch -p && for branch in `git branch -vv | grep ': gone]' | awk '{print $1}'`; do git branch -D $branch; done; }
+gitcleanbranches() { git fetch -p && for branch in `git branch -vv | grep ': gone]' | awk '{print $1}' | grep -v '*'`; do git branch -D $branch; done; }
 gitpatch() { git diff --no-ext-diff -w "$@" | vim -R -; }
 gitba() { git branch -a "$@"; }
 gitbl() { git branch -l "$@"; }

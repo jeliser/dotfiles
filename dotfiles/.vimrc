@@ -37,6 +37,9 @@ au BufRead,BufNewFile,BufReadPost *.gradle set syntax=groovy
 au BufRead,BufNewFile,BufReadPost *.icc set filetype=cpp
 au BufRead,BufNewFile,BufReadPost *.dockerfile set filetype=dockerfile
 
+" Force the Python stops to be 2
+au FileType python setl shiftwidth=2 tabstop=2
+
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 " Startup the Bundles
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"

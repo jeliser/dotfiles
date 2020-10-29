@@ -26,7 +26,9 @@ set t_vb=
 set laststatus=2
 
 set backup
-set backupdir=~/.vim/backup
+set backupdir=~/.vim/local/backup/
+set viewdir=~/.vim/local/view/
+set directory=~/.vim/local/swap/
 
 
 " Set syntax highlighting for particular files
@@ -58,7 +60,7 @@ au FileType python setl shiftwidth=2 tabstop=2
 if has("persistent_undo")
   set undolevels=1000
   set undoreload=10000
-  set undodir=~/.vim/.undodir/
+  set undodir=~/.vim/local/undo/
   set undofile
 endif
 

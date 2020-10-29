@@ -1,3 +1,5 @@
+alias ipy="python -c 'import IPython; IPython.terminal.ipapp.launch_new_instance()'"
+
 create_ve() {
   # Sanity check that an enviroment was set
   if [ "$#" -lt 1 ]; then

@@ -12,6 +12,25 @@ alias dr='docker_run'
 docker_bash() { dr --entrypoint "/bin/bash" $@; }
 alias db='docker_bash'
 
+docker_copy() {
+  # Sanity check that an enviroment was set
+  if [ "$#" -lt 2 ]; then
+    echo "Please supply the docker container and source directory."
+    echo "> docker_copy CONTAINER SOURCE [DESTINATION]"
+    return
+  fi
+
+  IMAGE=$1
+  SRC=$2
+  DEST='./'
+  if [ "$#" -eq 3 ]; then
+    DEST=$3
+  fi
+
+  docker cp $(docker create --rm $IMAGE):$SRC $DEST
+}
+alias docker_cp='docker_copy'
+
 docker_prune_all_containers() { echo $( docker ps -aq ) | xargs docker stop; echo $( docker ps -aq ) | xargs docker rm;}
 docker_prune_dangling_images() { docker system prune; }
 docker_prune_all_images() { docker system prune -a; }

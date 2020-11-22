@@ -10,3 +10,6 @@ mkdir -p ~/.vim/local/undo;
 mkdir -p ~/.vim/local/view;
 mkdir -p ~/.vim/autoload;
 
+## Create the Vundle directory and install all bundles
+rm -rf ~/.vim/bundle/vundle && git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/vundle --quiet
+vim +PluginInstall +qall

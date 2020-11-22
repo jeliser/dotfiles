@@ -38,6 +38,7 @@ au BufRead,BufNewFile,BufReadPost Jenkins* set syntax=groovy
 au BufRead,BufNewFile,BufReadPost *.gradle set syntax=groovy
 au BufRead,BufNewFile,BufReadPost *.icc set filetype=cpp
 au BufRead,BufNewFile,BufReadPost *.dockerfile set filetype=dockerfile
+au BufRead,BufNewFile,BufReadPost *.toml set filetype=toml
 
 " Force the Python stops to be 2
 au FileType python setl shiftwidth=2 tabstop=2
@@ -46,8 +47,11 @@ au FileType python setl shiftwidth=2 tabstop=2
 " Startup the Bundles
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 
-"set rtp+=~/.vim/bundle/vundle
-"call vundle#rc()
+set rtp+=~/.vim/bundle/vundle
+call vundle#rc()
+Plugin 'cespare/vim-toml'
+call vundle#end()
+
 "let g:ycm_confirm_extra_conf = 0
 "let g:ycm_enable_diagnostic_signs = 0
 "let g:ycm_enable_diagnostic_highlighting = 0

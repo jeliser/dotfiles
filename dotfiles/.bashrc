@@ -66,6 +66,15 @@ alias cr='crestart'
 
 alias afacts='ansible -m setup -c local -i "localhost" 127.0.0.1'
 
+alias urldecode='python3 -c "import sys, urllib.parse as ul; \
+      print(ul.unquote_plus(sys.argv[1]))"'
+alias urlencode='python3 -c "import sys, urllib.parse as ul; \
+      print (ul.quote_plus(sys.argv[1]))"'
+
+# https://stackoverflow.com/questions/8696751/add-space-between-every-letter
+insert_space() { echo "$@" | sed -e 's/\(.\)/\1 /g'; }
+jenkins_leak() { insert_space $@; }
+
 alias clean_untracked='git clean -xdff'
 
 showlog() { watch "sort -k 1 -k 2 -s $1* | tail $2 $3"; }
@@ -104,7 +113,7 @@ pk() { kill -9 $( pidof $@ ); }
 ag() { grep "$1" --exclude=\*.svn-base --exclude-dir=.. --exclude-dir=.git --exclude-dir=.work* --exclude=\*.ipynb --exclude=\*.swp -n .* $2; }
 lslong() { find $1/ -printf "%p\t%s\n"; }
 gr() { ag "$1" -r | column -t -s ':' | awk '{ print $1 }' | uniq | xargs sed -i "s/$1/$2/g"; }
-tree() { ls -R $1 | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/   /' -e 's/-/|/'; }
+#tree() { ls -R $1 | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/   /' -e 's/-/|/'; }
 
 # Read all the interesting bits from sub-files.
 shopt -s nullglob

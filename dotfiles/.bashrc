@@ -110,9 +110,9 @@ export TICKET_NAME=/
 svndiff() { vimdiff <(svn cat "$1") "$1"; }
 pg() { ps aux | grep "$@" | grep -v "grep"; }
 pk() { kill -9 $( pidof $@ ); }
-ag() { grep "$1" --exclude=\*.svn-base --exclude-dir=.. --exclude-dir=.git --exclude-dir=.work* --exclude=\*.ipynb --exclude=\*.swp -n .* $2; }
 lslong() { find $1/ -printf "%p\t%s\n"; }
-gr() { ag "$1" -r | column -t -s ':' | awk '{ print $1 }' | uniq | xargs sed -i "s/$1/$2/g"; }
+ag() { grep "$1" --exclude=\*.svn-base --exclude-dir=.. --exclude-dir=.git --exclude-dir=.work* --exclude=\*.ipynb --exclude=\*.swp -n .* -r $2; }
+gr() { ag "$1" -r | column -t -s ':' | awk '{ print $1 }' | uniq | xargs sed -i s$'\001'"$1"$'\001'"$2"$'\001''g'; }
 #tree() { ls -R $1 | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/   /' -e 's/-/|/'; }
 
 # Read all the interesting bits from sub-files.

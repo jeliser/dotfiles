@@ -9,7 +9,7 @@ alias da='docker_attach'
 
 docker_run() { docker run -it $@; }
 alias dr='docker_run'
-docker_bash() { dr --entrypoint "/bin/bash" $@; }
+docker_bash() { docker run -it --entrypoint "/bin/bash" $@; }
 alias db='docker_bash'
 
 docker_copy() {

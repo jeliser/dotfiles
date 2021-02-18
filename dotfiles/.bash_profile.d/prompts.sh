@@ -78,8 +78,8 @@ ps1_svn()
 ps1_cm() {
   if [[ $( git status 2>/dev/null | wc -m ) -gt 0 ]] ; then 
     ps1_git
-  elif [[ $( svn info 2>&1 | grep "is not a working copy" | wc -l ) -eq 0 ]] ; then
-    ps1_svn
+  #elif [[ $( svn info 2>&1 | grep "is not a working copy" | wc -l ) -eq 0 ]] ; then
+  #  ps1_svn
   else
     # There is no source control to show status for
     printf ""

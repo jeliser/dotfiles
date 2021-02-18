@@ -2,7 +2,8 @@
 
 set -eu
 
-dotfiles -s -R `pwd`/dotfiles --force
+~/.local/bin/dotfiles -s -R `pwd`/dotfiles --force
+
 if [ -f "$HOME/.gitconfig.public" ] && ! [ -f "$HOME/.gitconfig" ] ; then
   cp $HOME/.gitconfig.public $HOME/.gitconfig
 fi

@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -eu
+
 if [[ ! -f git-2.5.0.tar.gz ]] ; then
   wget https://www.kernel.org/pub/software/scm/git/git-2.5.0.tar.gz
 fi

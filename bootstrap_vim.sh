@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -eu
+
 # Put this in a script like:  install_vim_from_source
 #wget ftp://ftp.vim.org/pub/vim/unix/vim-7.4.tar.bz2
 #tar xvjf vim-7.4.tar.bz2

@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -eu
+
 VER=2.8.11
 
 if [[ ! -f cmake-${VER}.tar.gz ]] ; then

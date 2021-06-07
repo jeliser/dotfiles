@@ -41,7 +41,7 @@ au BufRead,BufNewFile,BufReadPost *.dockerfile set filetype=dockerfile
 au BufRead,BufNewFile,BufReadPost *.toml set filetype=toml
 
 " Force the Python stops to be 2
-au FileType python setl shiftwidth=2 tabstop=2
+au FileType python setl expandtab shiftwidth=2 softtabstop=2 tabstop=2
 
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 " Startup the Bundles

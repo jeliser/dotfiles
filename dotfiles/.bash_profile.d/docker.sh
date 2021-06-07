@@ -7,9 +7,9 @@ docker_connect() { docker exec -it $@ /bin/bash; }
 alias docker_attach='docker_connect'
 alias da='docker_attach'
 
-docker_run() { docker run -it $@; }
+docker_run() { docker run -it -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix $@; }
 alias dr='docker_run'
-docker_bash() { docker run -it --entrypoint "/bin/bash" $@; }
+docker_bash() { docker run -it -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix --entrypoint "/bin/bash" $@; }
 alias db='docker_bash'
 
 docker_copy() {

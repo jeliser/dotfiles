@@ -7,7 +7,7 @@ create_ve() {
     return
   fi
 
-  PYTHON='python3.7'
+  PYTHON=$( readlink -f $( which python3 ) )
   if [ "$#" -eq 2 ]; then
     PYTHON=$2
   fi

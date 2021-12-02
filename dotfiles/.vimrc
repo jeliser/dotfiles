@@ -40,6 +40,10 @@ au BufEnter,BufRead,BufNewFile,BufReadPost *.icc set filetype=cpp
 au BufEnter,BufRead,BufNewFile,BufReadPost *.dockerfile set filetype=dockerfile
 au BufEnter,BufRead,BufNewFile,BufReadPost *.toml set filetype=toml
 " Set syntax highlighting for Jinja files
+au BufEnter,BufRead,BufNewFile,BufReadPost *.h.jinja set syntax=cpp
+au BufEnter,BufRead,BufNewFile,BufReadPost *.hpp.jinja set syntax=cpp
+au BufEnter,BufRead,BufNewFile,BufReadPost *.c.jinja set syntax=cpp
+au BufEnter,BufRead,BufNewFile,BufReadPost *.cpp.jinja set syntax=cpp
 au BufEnter,BufRead,BufNewFile,BufReadPost *.py.jinja set syntax=python
 au BufEnter,BufRead,BufNewFile,BufReadPost *.yml.jinja set syntax=yaml
 au BufEnter,BufRead,BufNewFile,BufReadPost *.yaml.jinja set syntax=yaml

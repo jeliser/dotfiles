@@ -71,11 +71,15 @@ alias urldecode='python3 -c "import sys, urllib.parse as ul; \
 alias urlencode='python3 -c "import sys, urllib.parse as ul; \
       print (ul.quote_plus(sys.argv[1]))"'
 
+alias wget_all='wget -r -nH --cut-dirs=2 --no-parent --reject="index.html*"'
+alias compress='tar -czvf'
+
 # https://stackoverflow.com/questions/8696751/add-space-between-every-letter
 insert_space() { echo "$@" | sed -e 's/\(.\)/\1 /g'; }
 jenkins_leak() { insert_space $@; }
 
 alias clean_untracked='git clean -xdff'
+alias windows_key='sudo strings /sys/firmware/acpi/tables/MSDM'
 
 showlog() { watch "sort -k 1 -k 2 -s $1* | tail $2 $3"; }
 alias sl='showlog'
@@ -113,6 +117,7 @@ pk() { kill -9 $( pidof $@ ); }
 lslong() { find $1/ -printf "%p\t%s\n"; }
 ag() { grep "$1" --exclude=\*.svn-base --exclude-dir=.. --exclude-dir=.git --exclude-dir=.work* --exclude=\*.ipynb --exclude=\*.swp -n .* -r $2; }
 gr() { ag "$1" -r | column -t -s ':' | awk '{ print $1 }' | uniq | xargs sed -i s$'\001'"$1"$'\001'"$2"$'\001''g'; }
+# Do something with the line replacement regex .. .*(Nop\(\);)(\r\n|\r|\n)
 #tree() { ls -R $1 | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/   /' -e 's/-/|/'; }
 
 # Read all the interesting bits from sub-files.

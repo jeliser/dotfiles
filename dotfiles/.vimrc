@@ -32,13 +32,17 @@ set directory=~/.vim/local/swap/
 
 
 " Set syntax highlighting for particular files
-au BufRead,BufNewFile,BufReadPost SCons* set syntax=python
-au BufRead,BufNewFile,BufReadPost *.yaml set syntax=yaml
-au BufRead,BufNewFile,BufReadPost Jenkins* set syntax=groovy
-au BufRead,BufNewFile,BufReadPost *.gradle set syntax=groovy
-au BufRead,BufNewFile,BufReadPost *.icc set filetype=cpp
-au BufRead,BufNewFile,BufReadPost *.dockerfile set filetype=dockerfile
-au BufRead,BufNewFile,BufReadPost *.toml set filetype=toml
+au BufEnter,BufRead,BufNewFile,BufReadPost SCons* set syntax=python
+au BufEnter,BufRead,BufNewFile,BufReadPost *.yaml set syntax=yaml
+au BufEnter,BufRead,BufNewFile,BufReadPost Jenkins* set syntax=groovy
+au BufEnter,BufRead,BufNewFile,BufReadPost *.gradle set syntax=groovy
+au BufEnter,BufRead,BufNewFile,BufReadPost *.icc set filetype=cpp
+au BufEnter,BufRead,BufNewFile,BufReadPost *.dockerfile set filetype=dockerfile
+au BufEnter,BufRead,BufNewFile,BufReadPost *.toml set filetype=toml
+" Set syntax highlighting for Jinja files
+au BufEnter,BufRead,BufNewFile,BufReadPost *.py.jinja set syntax=python
+au BufEnter,BufRead,BufNewFile,BufReadPost *.yml.jinja set syntax=yaml
+au BufEnter,BufRead,BufNewFile,BufReadPost *.yaml.jinja set syntax=yaml
 
 " Force the Python stops to be 2
 au FileType python setl expandtab shiftwidth=2 softtabstop=2 tabstop=2

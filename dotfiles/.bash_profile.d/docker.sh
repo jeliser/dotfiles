@@ -31,7 +31,8 @@ docker_copy() {
 }
 alias docker_cp='docker_copy'
 
-docker_prune_all_containers() { echo $( docker ps -aq ) | xargs docker stop; echo $( docker ps -aq ) | xargs docker rm;}
+docker_stop_all_containers() { echo $( docker ps -aq ) | xargs docker stop; echo $( docker ps -aq ); }
+docker_prune_all_containers() { echo $( docker ps -aq ) | xargs docker stop; echo $( docker ps -aq ) | xargs docker rm -f; }
 docker_prune_dangling_images() { docker system prune; }
 docker_prune_all_images() { docker system prune -a; }
 

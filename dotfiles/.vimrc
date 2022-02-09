@@ -96,6 +96,7 @@ hi cDefine      ctermfg=Red          cterm=none
 if &diff
   colorscheme evening
 endif
+highlight Visual cterm=reverse ctermbg=NONE
 
 " 80 column coloring options
 "

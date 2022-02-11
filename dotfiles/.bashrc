@@ -127,6 +127,9 @@ for file in "$HOME/.bash_profile.d"/*.sh; do
 done
 shopt -u nullglob
 
+# Some helper methods for running Juypter on a local machine.
+jupyter_create() { create_ve jupyter; pip install jupyter; }
+jupyter_start() { ve jupyter; jupyter notebook --NotebookApp.token='' --NotebookApp.password=''; }
 
 # Uncomment to enable color prompt
 color_prompt=yes

@@ -13,6 +13,8 @@ gitlsu() { git ls-files --others; }
 gitbranchname() { git branch 2>/dev/null | grep "*" | awk -F' ' '{print $NF}'; }
 gitshow() { git show; }
 gitignored() { find . -type f  | git check-ignore --stdin; }
+gitfiles() { git log --name-status; }
+gitstat() { git log --stat; }
 
 alias gitcut='cut -f 2 -d " "'
 

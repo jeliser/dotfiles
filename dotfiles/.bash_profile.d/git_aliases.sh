@@ -16,6 +16,7 @@ gitignored() { find . -type f  | git check-ignore --stdin; }
 gitfiles() { git log --name-status; }
 gitdifffiles() { git diff HEAD^..$1 --name-only; }
 gitstat() { git log --stat; }
+gittree() { git log --oneline --graph --decorate --all; }
 
 alias gitcut='cut -f 2 -d " "'
 

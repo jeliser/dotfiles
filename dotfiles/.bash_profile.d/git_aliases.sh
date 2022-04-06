@@ -14,6 +14,7 @@ gitbranchname() { git branch 2>/dev/null | grep "*" | awk -F' ' '{print $NF}'; }
 gitshow() { git show; }
 gitignored() { find . -type f  | git check-ignore --stdin; }
 gitfiles() { git log --name-status; }
+gitdifffiles() { git diff HEAD^..$1 --name-only; }
 gitstat() { git log --stat; }
 
 alias gitcut='cut -f 2 -d " "'
@@ -60,7 +61,7 @@ gitcommit() {
     return
   fi
 
-  PREFIX="$( git branch | grep "*" | awk '{print $2}' | sed 's:.*/::' | awk -F'-' '{print $1 "-" $2}' | sed 's:-$::' ): "
+  PREFIX="$( git branch | grep "*" | awk '{print $2}' | sed 's:.*/::' | awk -F'-' '{print $1 "-" $2}' | sed 's:-$::' | sed -r 's/.*_//g' ): "
   git commit -m "${PREFIX}$@"
 }
 gitcm() { gitcommit "$@"; }

@@ -13,6 +13,7 @@ alias dr='docker_run'
 docker_bash() { docker run -it -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix --entrypoint "/bin/bash" $@; }
 alias db='docker_bash'
 
+alias docker_get='docker_copy'
 docker_copy() {
   # Sanity check that an enviroment was set
   if [ "$#" -lt 2 ]; then
@@ -58,5 +59,4 @@ docker_new_instance() {
   echo "Loading: ${CONTAINER}"
   docker exec -it $( docker run -dit ${CONTAINER} bash ) /bin/bash;
 }
-
 

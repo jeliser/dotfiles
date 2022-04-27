@@ -152,6 +152,11 @@ map <F9> i<C-r>* <ESC>
 imap <F9> <C-r>*
 cmap <F9> <C-r>*
 
+" Reload all the buffers from the on-disk files
+map  <F10> :set autoread<CR> :checktime<CR>
+imap <F10> <ESC>:set autoread<CR> :checktime<CR>
+cmap <F10> <ESC><ESC>:set autoread<CR> :checktime<CR>
+
 " Replace The DOS ^M
 map  <F11> :call Replace_M()<CR>
 imap <F11> <ESC>:call Replace_M()<CR>

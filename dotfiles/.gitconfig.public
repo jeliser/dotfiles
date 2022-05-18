@@ -9,6 +9,7 @@
   visualise = !gitk
   graph = log --color --graph --pretty=format:\"%h | %ad | %an | %s%d\" --date=short
   unpushed = log --branches --not --remotes --oneline --decorate
+  reorder = "!GIT_SEQUENCE_EDITOR=\"sed -i -n 'h;1n;2p;g;p'\" git rebase -i HEAD~2"
 
 [color]
 	ui = true

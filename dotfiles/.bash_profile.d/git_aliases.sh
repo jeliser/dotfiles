@@ -69,6 +69,9 @@ gitcm() { gitcommit "$@"; }
 gitc() { gitcommit "$@"; }
 gc() { gitcommit "$@"; }
 
+gitcommitreorder() { gitcommit "$@" && git reorder; }
+alias gcr='gitcommitreorder'
+
 # Export the current branch
 gitexport() { 
   BRANCH=$( git rev-parse --abbrev-ref HEAD )
@@ -90,6 +93,13 @@ pushorigin() {
   BRANCH=$( git rev-parse --abbrev-ref HEAD )
   echo "Executing command: git push origin ${BRANCH} -u $@"
   git push origin ${BRANCH} -u $@
+}
+
+pushallbutlast() { 
+  REMOTE=$( git for-each-ref --format='%(upstream:short)' $( git symbolic-ref -q HEAD ) | awk -F'/' '{print $1}' )
+  BRANCH=$( git rev-parse --abbrev-ref HEAD )
+  echo "Executing command: git push ${REMOTE} ${BRANCH} $@"
+  git push ${REMOTE} HEAD~:${BRANCH} $@
 }
 
 # Switch to the git root directory

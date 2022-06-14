@@ -305,3 +305,7 @@ gitsize() {
   fi
 }
 
+# Find the commit that a blob was editted on.
+gitfindblob() {
+  git whatchanged --all --find-object=$1
+}

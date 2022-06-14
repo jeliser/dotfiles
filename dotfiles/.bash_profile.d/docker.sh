@@ -9,6 +9,7 @@ alias da='docker_attach'
 
 #docker_run() { docker run -u $(id -u ${USER}):$(id -g ${USER}) -it -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix $@; }
 docker_run() { docker run -it -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix $@; }
+docker_run_location() { docker container run -u $(id -u ${USER}):$(id -g ${USER}) -v `pwd`:/tmp -it $@; }
 alias dr='docker_run'
 docker_bash() { docker run -it -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix --entrypoint "/bin/bash" $@; }
 alias db='docker_bash'

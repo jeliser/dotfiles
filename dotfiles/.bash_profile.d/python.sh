@@ -25,3 +25,10 @@ alias dve='delete_ve'
 
 ve() { source ~/.python_env/$1/bin/activate; }
 
+pypi_cache() {
+  if [ $( pip freeze | grep proxpi | wc -l ) -lt 1 ]; then
+    pip --isolated install proxpi
+  fi
+
+  PROXPI_CACHE_DIR=~/.pypi_cache FLASK_APP=proxpi.server flask run >> /tmp/proxpi.log 2>&1 &
+}

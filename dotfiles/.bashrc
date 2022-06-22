@@ -51,7 +51,7 @@ alias sc='scons -u -j 10'
 alias scd='sc --with-debug'
 alias svnstat='svn status | grep ^[^?]'
 
-alias acgdb='ASAN_OPTIONS=abort_on_error=1 cgdb'
+alias acgdb='ASAN_OPTIONS="detect_odr_violation=2:abort_on_error=1:color=never" cgdb'
 alias dbg='\cgdb -d /opt/gdb-7.6/bin/gdb --args'
 
 alias ctop='circus-top'

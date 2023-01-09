@@ -37,7 +37,7 @@ ps1_git()
   fi
 
   # Get the branch and SHA values
-  branch=$( git branch 2>/dev/null | grep "*" | awk -F' ' '{print $NF}' )
+  branch=$( git rev-parse --abbrev-ref HEAD )
   sha1=$( git rev-parse --verify HEAD --short 2>/dev/null )
 
   if [[ -z ${branch} ]] ; then

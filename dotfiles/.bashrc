@@ -105,7 +105,7 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 
 
 # User specific aliases and functions
-export PATH=$HOME/local/bin:/usr/local/bin:/usr/local/bin/svn/bin:$PATH
+export PATH=$HOME/.local/bin:/usr/local/bin:/usr/local/bin/svn/bin:$PATH
 # Force git to always use the CLI.  I dislike the OpenSSH popup dialog
 export GIT_ASKPASS=
 export TICKET_NAME=/
@@ -118,6 +118,7 @@ pk() { kill -9 $( pidof $@ ); }
 lslong() { find $1/ -printf "%p\t%s\n"; }
 ag() { grep "$1" --exclude=\*.svn-base --exclude-dir=.. --exclude-dir=.git --exclude-dir=morpheus_python3* --exclude-dir=build* --exclude-dir=.work* --exclude=\*.ipynb --exclude=\*.swp -n .* -r $2; }
 gr() { ag "$1" -r | column -t -s ':' | awk '{ print $1 }' | uniq | xargs sed -i s$'\001'"$1"$'\001'"$2"$'\001''g'; }
+lg() { grep -rl . -e $@; }
 # Do something with the line replacement regex .. .*(Nop\(\);)(\r\n|\r|\n)
 #tree() { ls -R $1 | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/   /' -e 's/-/|/'; }
 

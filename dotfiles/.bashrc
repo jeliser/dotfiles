@@ -142,6 +142,15 @@ shopt -u nullglob
 jupyter_create() { create_ve jupyter; pip install jupyter; }
 jupyter_start() { ve jupyter; jupyter notebook --NotebookApp.token='' --NotebookApp.password=''; }
 
+show_files() {
+  if [ $# -ne 1 ]
+  then
+    find ./* -type f -printf "%s %p\n" | sort -n -r
+  else
+    find $1 -type f -printf "%s %p\n" | sort -n -r
+  fi
+}
+
 # Uncomment to enable color prompt
 color_prompt=yes
 if [ "$color_prompt" = yes ]; then

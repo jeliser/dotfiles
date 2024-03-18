@@ -26,6 +26,10 @@ extract() {
   fi
 }
 
+function get_extract_size() {
+  tar -tzvf $1 | awk '{total += $3} END {printf "%.2f MB\n", total/1024/1024}'
+}
+
 function ips() {
   ifconfig | grep "inet " | awk '{ print $2 }'
 }

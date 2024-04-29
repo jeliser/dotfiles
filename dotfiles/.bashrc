@@ -134,6 +134,8 @@ alias check_performance='time for i in {1..1000000}; do ((result=i*2)); done'
 
 alias stream_camera='mjpg-streamer -i "input_uvc.so -d /dev/video0 -r 640x480 -f 10" -o "output_http.so -w ./www -p 5555"'
 
+ai() { gh copilot explain "$@"; }
+
 # Read all the interesting bits from sub-files.
 shopt -s nullglob
 for file in "$HOME/.bash_profile.d"/*.sh; do

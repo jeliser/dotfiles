@@ -23,6 +23,12 @@ delete_ve() {
 }
 alias dve='delete_ve'
 
+start_ve() {
+  create_ve $( basename $( pwd ) )
+  pip install -r requirements.txt
+}
+alias sve='start_ve'
+
 ve() { source ~/.python_env/$1/bin/activate; }
 
 pypi_cache() {

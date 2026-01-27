@@ -119,7 +119,7 @@ process_grep() { pg $@; }
 pk() { kill -9 $( pidof $@ ); }
 pid_kill() { pk $@; }
 lslong() { find $1/ -printf "%p\t%s\n"; }
-ag() { grep "$1" --exclude=\*.svn-base --exclude-dir=.. --exclude-dir=.git --exclude-dir=morpheus_python3* --exclude-dir=build* --exclude-dir=.work* --exclude=\*.ipynb --exclude=\*.swp -n .* -r $2; }
+ag() { grep "$1" --exclude=\*.svn-base --exclude-dir=.. --exclude-dir=.git --exclude-dir=morpheus_python3* --exclude-dir=build* --exclude-dir=.work* --exclude=\*.ipynb --exclude=\*.swp -n -r $2; }
 awk_grep() { ag $@; }
 gr() { ag "$1" -r | column -t -s ':' | awk '{ print $1 }' | uniq | xargs sed -i s$'\001'"$1"$'\001'"$2"$'\001''g'; }
 grep_replace() { gr $@; }
